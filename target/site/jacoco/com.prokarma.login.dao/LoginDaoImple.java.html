@@ -16,7 +16,7 @@ import com.prokarma.login.model.InfoFromDB;
  */
 @Component
 @Repository
-<span class="nc" id="L19">public class LoginDaoImple implements ILoginDao {</span>
+<span class="fc" id="L19">public class LoginDaoImple implements ILoginDao {</span>
 	/**
 	 * to connect database
 	 */
@@ -31,13 +31,13 @@ import com.prokarma.login.model.InfoFromDB;
 	 * password
 	 */
 	public String getpaswordDetails(String userName) {
-<span class="nc" id="L34">		String query = &quot;select user_key from ASK.ask_user_tbl where u_name=?&quot;;</span>
+<span class="fc" id="L34">		String query = &quot;select user_key from ASK.ask_user_tbl where u_name=?&quot;;</span>
 		try {
 
-<span class="nc" id="L37">			return jdbcTemplate.queryForObject(query, String.class, userName);</span>
+<span class="fc" id="L37">			return jdbcTemplate.queryForObject(query, String.class, userName);</span>
 
-<span class="nc" id="L39">		} catch (Exception e) {</span>
-<span class="nc" id="L40">			return &quot;&quot;;</span>
+<span class="fc" id="L39">		} catch (Exception e) {</span>
+<span class="fc" id="L40">			return &quot;&quot;;</span>
 		}
 	}
 
@@ -48,14 +48,14 @@ import com.prokarma.login.model.InfoFromDB;
 	 * actually hits database and get employee id
 	 */
 	public InfoFromDB getEmpDetails(String userName) {
-<span class="nc" id="L51">		String querySql = &quot;select emp_id,fst_name,last_name from ask.ask_user_tbl where u_name='&quot;+userName+&quot;'&quot;;</span>
-<span class="nc" id="L52">		return jdbcTemplate.queryForObject(querySql, new RowMapper&lt;InfoFromDB&gt;() {</span>
+<span class="fc" id="L51">		String querySql = &quot;select emp_id,fst_name,last_name from ask.ask_user_tbl where u_name='&quot;+userName+&quot;'&quot;;</span>
+<span class="fc" id="L52">		return jdbcTemplate.queryForObject(querySql, new RowMapper&lt;InfoFromDB&gt;() {</span>
 			public InfoFromDB mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
-<span class="nc" id="L54">				InfoFromDB infoFromDB = new InfoFromDB();</span>
-<span class="nc" id="L55">				infoFromDB.setEmpId(resultSet.getInt(&quot;emp_id&quot;));</span>
-<span class="nc" id="L56">				infoFromDB.setFirstName(resultSet.getString(&quot;fst_name&quot;));</span>
-<span class="nc" id="L57">				infoFromDB.setLastName(resultSet.getString(&quot;last_name&quot;));</span>
-<span class="nc" id="L58">				return infoFromDB;</span>
+<span class="fc" id="L54">				InfoFromDB infoFromDB = new InfoFromDB();</span>
+<span class="fc" id="L55">				infoFromDB.setEmpId(resultSet.getInt(&quot;emp_id&quot;));</span>
+<span class="fc" id="L56">				infoFromDB.setFirstName(resultSet.getString(&quot;fst_name&quot;));</span>
+<span class="fc" id="L57">				infoFromDB.setLastName(resultSet.getString(&quot;last_name&quot;));</span>
+<span class="fc" id="L58">				return infoFromDB;</span>
 			}
 		});
 	}

@@ -25,7 +25,7 @@ import com.prokarma.userprofile.service.INewUserService;
 @RestController
 @EnableWebMvc
 @RequestMapping(&quot;/ask&quot;)
-<span class="nc" id="L28">public class NewUserController implements Serializable {</span>
+<span class="fc" id="L28">public class NewUserController implements Serializable {</span>
 
 	/**
 	 * 
@@ -45,7 +45,7 @@ import com.prokarma.userprofile.service.INewUserService;
 	/**
 	 * 
 	 */
-<span class="nc" id="L48">	final transient ResponseBean responseBean = new ResponseBean();</span>
+<span class="fc" id="L48">	final transient ResponseBean responseBean = new ResponseBean();</span>
 	/**
 	 * @param userProfile
 	 * @return
@@ -54,10 +54,10 @@ import com.prokarma.userprofile.service.INewUserService;
 	@RequestMapping(value = &quot;/addUser&quot;, consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity&lt;ResponseBean&gt; resetRequest(@RequestBody final UserProfileBean userProfile) {
 
-<span class="nc" id="L57">		final String response = newUserService.createProfile(userProfile);</span>
+<span class="fc" id="L57">		final String response = newUserService.createProfile(userProfile);</span>
 	
-<span class="nc" id="L59">		responseBean.setResponseMessage(response);</span>
-<span class="nc" id="L60">		return new ResponseEntity&lt;&gt;(responseBean, HttpStatus.OK);</span>
+<span class="fc" id="L59">		responseBean.setResponseMessage(response);</span>
+<span class="fc" id="L60">		return new ResponseEntity&lt;&gt;(responseBean, HttpStatus.OK);</span>
 
 	}
 

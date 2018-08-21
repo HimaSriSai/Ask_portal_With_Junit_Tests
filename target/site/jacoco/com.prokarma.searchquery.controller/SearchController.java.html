@@ -23,7 +23,7 @@ import com.prokarma.searchquery.service.SearchServiceImpl;
 @RestController
 @EnableWebMvc
 @RequestMapping(&quot;/ask&quot;)
-<span class="nc" id="L26">public class SearchController {</span>
+<span class="fc" id="L26">public class SearchController {</span>
 
 	/**
 	 * 
@@ -38,9 +38,9 @@ import com.prokarma.searchquery.service.SearchServiceImpl;
 	@RequestMapping(value = &quot;/getCategories&quot;, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity&lt;List&lt;String&gt;&gt; resetRequest() {
 
-<span class="nc" id="L41">		final List&lt;String&gt; category = searchServiceImpl.getcategory();</span>
+<span class="fc" id="L41">		final List&lt;String&gt; category = searchServiceImpl.getcategory();</span>
 
-<span class="nc" id="L43">		return new ResponseEntity&lt;&gt;(category, HttpStatus.OK);</span>
+<span class="fc" id="L43">		return new ResponseEntity&lt;&gt;(category, HttpStatus.OK);</span>
 
 	}
 

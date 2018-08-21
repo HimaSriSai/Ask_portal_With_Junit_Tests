@@ -17,12 +17,12 @@ import com.prokarma.postquery.model.PostQueryModel;
  *
  */
 @Repository
-<span class="nc" id="L20">public class PostQueryDaoImpl implements IPostQueryDao {</span>
+<span class="fc" id="L20">public class PostQueryDaoImpl implements IPostQueryDao {</span>
 
 	/**
 	 * 
 	 */
-<span class="nc" id="L25">	public static final Logger LOGGER = Logger.getLogger(PostQueryDaoImpl.class);</span>
+<span class="fc" id="L25">	public static final Logger LOGGER = Logger.getLogger(PostQueryDaoImpl.class);</span>
 
 	/**
 	 * 
@@ -40,66 +40,66 @@ import com.prokarma.postquery.model.PostQueryModel;
 	@Override
 	public String postque(PostQueryModel postquerymodel) throws ParseException {
 
-<span class="nc" id="L43">		String postStatus = &quot;y&quot;;</span>
-<span class="nc" id="L44">		String categoryStatus = &quot;y&quot;;</span>
-<span class="nc" id="L45">		int onSelectedCtgry = 0;</span>
-<span class="nc" id="L46">		int ctgryresult = 0;</span>
-<span class="nc" id="L47">		int queryresult = 0;</span>
-<span class="nc" id="L48">		DateFormat formatter = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="fc" id="L43">		String postStatus = &quot;y&quot;;</span>
+<span class="fc" id="L44">		String categoryStatus = &quot;y&quot;;</span>
+<span class="fc" id="L45">		int onSelectedCtgry = 0;</span>
+<span class="fc" id="L46">		int ctgryresult = 0;</span>
+<span class="fc" id="L47">		int queryresult = 0;</span>
+<span class="fc" id="L48">		DateFormat formatter = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
 
-<span class="nc" id="L50">		final Date today = new Date();</span>
+<span class="fc" id="L50">		final Date today = new Date();</span>
 
-<span class="nc" id="L52">		final Date str = formatter.parse(formatter.format(today));</span>
-<span class="nc" id="L53">		java.sql.Date sqlDate = new java.sql.Date(str.getTime());</span>
+<span class="fc" id="L52">		final Date str = formatter.parse(formatter.format(today));</span>
+<span class="fc" id="L53">		java.sql.Date sqlDate = new java.sql.Date(str.getTime());</span>
 
-<span class="nc" id="L55">		String responseMsg = null;</span>
-<span class="nc" id="L56">		String sqlforquery = null;</span>
-<span class="nc" id="L57">		String sqlforctgry = null;</span>
+<span class="fc" id="L55">		String responseMsg = null;</span>
+<span class="fc" id="L56">		String sqlforquery = null;</span>
+<span class="fc" id="L57">		String sqlforctgry = null;</span>
 		try {
-<span class="nc" id="L59">			MapSqlParameterSource mapsqlparamsrc = new MapSqlParameterSource();</span>
-<span class="nc" id="L60">			mapsqlparamsrc.addValue(&quot;post_id&quot;, postquerymodel.getPostid());</span>
-<span class="nc" id="L61">			mapsqlparamsrc.addValue(&quot;pstd_qry&quot;, postquerymodel.getPstdqry());</span>
-<span class="nc" id="L62">			mapsqlparamsrc.addValue(&quot;ctgry_name&quot;, postquerymodel.getCtgryname());</span>
-<span class="nc" id="L63">			mapsqlparamsrc.addValue(&quot;post_crtd_by&quot;, postquerymodel.getEmpid());</span>
-<span class="nc" id="L64">			mapsqlparamsrc.addValue(&quot;pstd_dt&quot;, sqlDate);</span>
-<span class="nc" id="L65">			mapsqlparamsrc.addValue(&quot;lst_uptd_by&quot;, postquerymodel.getLastuptdby());</span>
-<span class="nc" id="L66">			mapsqlparamsrc.addValue(&quot;lst_uptd_dt&quot;, sqlDate);</span>
-<span class="nc" id="L67">			mapsqlparamsrc.addValue(&quot;pst_status&quot;, postStatus);</span>
+<span class="fc" id="L59">			MapSqlParameterSource mapsqlparamsrc = new MapSqlParameterSource();</span>
+<span class="fc" id="L60">			mapsqlparamsrc.addValue(&quot;post_id&quot;, postquerymodel.getPostid());</span>
+<span class="fc" id="L61">			mapsqlparamsrc.addValue(&quot;pstd_qry&quot;, postquerymodel.getPstdqry());</span>
+<span class="fc" id="L62">			mapsqlparamsrc.addValue(&quot;ctgry_name&quot;, postquerymodel.getCtgryname());</span>
+<span class="fc" id="L63">			mapsqlparamsrc.addValue(&quot;post_crtd_by&quot;, postquerymodel.getEmpid());</span>
+<span class="fc" id="L64">			mapsqlparamsrc.addValue(&quot;pstd_dt&quot;, sqlDate);</span>
+<span class="fc" id="L65">			mapsqlparamsrc.addValue(&quot;lst_uptd_by&quot;, postquerymodel.getLastuptdby());</span>
+<span class="fc" id="L66">			mapsqlparamsrc.addValue(&quot;lst_uptd_dt&quot;, sqlDate);</span>
+<span class="fc" id="L67">			mapsqlparamsrc.addValue(&quot;pst_status&quot;, postStatus);</span>
 
-<span class="nc" id="L69">			sqlforquery = &quot;insert into ASK.ASK_POST_TBL values(ask.post_id_seq.nextval,:pstd_qry,:ctgry_name,:pstd_dt,:lst_uptd_by,:lst_uptd_dt,:pst_status,:post_crtd_by)&quot;;</span>
+<span class="fc" id="L69">			sqlforquery = &quot;insert into ASK.ASK_POST_TBL values(ask.post_id_seq.nextval,:pstd_qry,:ctgry_name,:pstd_dt,:lst_uptd_by,:lst_uptd_dt,:pst_status,:post_crtd_by)&quot;;</span>
 
-<span class="nc bnc" id="L71" title="All 2 branches missed.">			if (postquerymodel.getCtgryname() != &quot;&quot;) {</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">			if (postquerymodel.getCtgryname() != &quot;&quot;) {</span>
 
-<span class="nc" id="L73">				onSelectedCtgry = jdbctemplate.update(sqlforquery, mapsqlparamsrc);</span>
+<span class="fc" id="L73">				onSelectedCtgry = jdbctemplate.update(sqlforquery, mapsqlparamsrc);</span>
 
-<span class="nc bnc" id="L75" title="All 2 branches missed.">			} else if (postquerymodel.getCtgryname() == &quot;&quot;) {</span>
-<span class="nc" id="L76">				sqlforctgry = &quot;insert into ASK.ASK_CTGRY_TBL values(ask.ctgry_id_seq.nextval,:ctgry_name,:ctgry_crtd_by,:ctgry_crtd_dt,:lst_uptd_by,:lst_uptd_dt,:ctgry_status)&quot;;</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">			} else if (postquerymodel.getCtgryname() == &quot;&quot;) {</span>
+<span class="fc" id="L76">				sqlforctgry = &quot;insert into ASK.ASK_CTGRY_TBL values(ask.ctgry_id_seq.nextval,:ctgry_name,:ctgry_crtd_by,:ctgry_crtd_dt,:lst_uptd_by,:lst_uptd_dt,:ctgry_status)&quot;;</span>
 
-<span class="nc" id="L78">				mapsqlparamsrc.addValue(&quot;ctgry_id&quot;, postquerymodel.getCtgryid());</span>
-<span class="nc" id="L79">				mapsqlparamsrc.addValue(&quot;ctgry_crtd_by&quot;, postquerymodel.getCtgrycrtdby());</span>
-<span class="nc" id="L80">				mapsqlparamsrc.addValue(&quot;ctgry_crtd_dt&quot;, sqlDate);</span>
-<span class="nc" id="L81">				mapsqlparamsrc.addValue(&quot;lst_uptd_by&quot;, postquerymodel.getLastuptdby());</span>
-<span class="nc" id="L82">				mapsqlparamsrc.addValue(&quot;lst_uptd_dt&quot;, sqlDate);</span>
-<span class="nc" id="L83">				mapsqlparamsrc.addValue(&quot;ctgry_status&quot;, categoryStatus);</span>
-<span class="nc" id="L84">				mapsqlparamsrc.addValue(&quot;ctgry_name&quot;, postquerymodel.getOther());</span>
+<span class="fc" id="L78">				mapsqlparamsrc.addValue(&quot;ctgry_id&quot;, postquerymodel.getCtgryid());</span>
+<span class="fc" id="L79">				mapsqlparamsrc.addValue(&quot;ctgry_crtd_by&quot;, postquerymodel.getCtgrycrtdby());</span>
+<span class="fc" id="L80">				mapsqlparamsrc.addValue(&quot;ctgry_crtd_dt&quot;, sqlDate);</span>
+<span class="fc" id="L81">				mapsqlparamsrc.addValue(&quot;lst_uptd_by&quot;, postquerymodel.getLastuptdby());</span>
+<span class="fc" id="L82">				mapsqlparamsrc.addValue(&quot;lst_uptd_dt&quot;, sqlDate);</span>
+<span class="fc" id="L83">				mapsqlparamsrc.addValue(&quot;ctgry_status&quot;, categoryStatus);</span>
+<span class="fc" id="L84">				mapsqlparamsrc.addValue(&quot;ctgry_name&quot;, postquerymodel.getOther());</span>
 
-<span class="nc" id="L86">				ctgryresult = jdbctemplate.update(sqlforctgry, mapsqlparamsrc);</span>
-<span class="nc" id="L87">				queryresult = jdbctemplate.update(sqlforquery, mapsqlparamsrc);</span>
+<span class="fc" id="L86">				ctgryresult = jdbctemplate.update(sqlforctgry, mapsqlparamsrc);</span>
+<span class="fc" id="L87">				queryresult = jdbctemplate.update(sqlforquery, mapsqlparamsrc);</span>
 			}
 
-<span class="nc bnc" id="L90" title="All 6 branches missed.">			if (onSelectedCtgry == 1 || (ctgryresult == 1 &amp;&amp; queryresult == 1)) {</span>
-<span class="nc" id="L91">				LOGGER.info(&quot;Query Successfully posted&quot;);</span>
-<span class="nc" id="L92">				responseMsg = &quot;Query Successfully posted&quot;;</span>
+<span class="pc bpc" id="L90" title="2 of 6 branches missed.">			if (onSelectedCtgry == 1 || (ctgryresult == 1 &amp;&amp; queryresult == 1)) {</span>
+<span class="fc" id="L91">				LOGGER.info(&quot;Query Successfully posted&quot;);</span>
+<span class="fc" id="L92">				responseMsg = &quot;Query Successfully posted&quot;;</span>
 
 			} 
 
-<span class="nc" id="L96">		} catch (Exception e) {</span>
+<span class="fc" id="L96">		} catch (Exception e) {</span>
 
-<span class="nc" id="L98">			responseMsg = &quot;failure&quot;;</span>
+<span class="fc" id="L98">			responseMsg = &quot;failure&quot;;</span>
 
-<span class="nc" id="L100">			LOGGER.info(&quot;Failed To post query &quot;+e.getMessage());</span>
-<span class="nc" id="L101">		}</span>
-<span class="nc" id="L102">		return responseMsg;</span>
+<span class="fc" id="L100">			LOGGER.info(&quot;Failed To post query &quot;+e.getMessage());</span>
+<span class="fc" id="L101">		}</span>
+<span class="fc" id="L102">		return responseMsg;</span>
 
 	}
 }

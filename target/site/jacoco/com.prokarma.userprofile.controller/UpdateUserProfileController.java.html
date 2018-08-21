@@ -21,7 +21,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileService;
 @RestController
 @EnableWebMvc
 @RequestMapping(&quot;/ask&quot;)
-<span class="nc" id="L24">public class UpdateUserProfileController implements Serializable {</span>
+<span class="fc" id="L24">public class UpdateUserProfileController implements Serializable {</span>
 
 	/**
 	 * 
@@ -40,7 +40,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileService;
 	 */
 	@RequestMapping(value = &quot;/updateUser&quot;, consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseBean updateUser(@RequestBody final UserProfileBean userModel) {
-<span class="nc" id="L43">		return updateService.updateUser(userModel);</span>
+<span class="fc" id="L43">		return updateService.updateUser(userModel);</span>
 
 	}
 }

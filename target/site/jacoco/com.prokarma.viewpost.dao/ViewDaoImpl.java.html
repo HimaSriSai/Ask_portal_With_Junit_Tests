@@ -23,7 +23,7 @@ import com.prokarma.viewpost.model.SearchInfoModel;
  *
  */
 @Component
-<span class="nc" id="L26">public class ViewDaoImpl implements IViewDao {</span>
+<span class="fc" id="L26">public class ViewDaoImpl implements IViewDao {</span>
 	/**
 	 * 
 	 */
@@ -40,48 +40,48 @@ import com.prokarma.viewpost.model.SearchInfoModel;
 	 * @see com.prokarma.viewAll.dao.IViewDao#getPostdata
 	 */
 	public List&lt;PostReplyTotal&gt; getPostdata(final SearchInfoModel searchModelInfo) {
-<span class="nc" id="L43">		String queryObject = null;</span>
+<span class="fc" id="L43">		String queryObject = null;</span>
 
-<span class="nc bnc" id="L45" title="All 4 branches missed.">		boolean isEmployeeWithoutCategory = searchModelInfo.getCategory().equalsIgnoreCase(&quot;&quot;) &amp;&amp; searchModelInfo.getEmpid() == 0;</span>
-<span class="nc bnc" id="L46" title="All 2 branches missed.">		if (isEmployeeWithoutCategory) {</span>
-<span class="nc" id="L47">			queryObject = &quot;select u1.fst_name as postCreat,u1.last_name as postlast,u2.fst_name,u2.last_name,a.post_id,a.pstd_qry,a.ctgry_name,&quot;</span>
+<span class="fc bfc" id="L45" title="All 4 branches covered.">		boolean isEmployeeWithoutCategory = searchModelInfo.getCategory().equalsIgnoreCase(&quot;&quot;) &amp;&amp; searchModelInfo.getEmpid() == 0;</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">		if (isEmployeeWithoutCategory) {</span>
+<span class="fc" id="L47">			queryObject = &quot;select u1.fst_name as postCreat,u1.last_name as postlast,u2.fst_name,u2.last_name,a.post_id,a.pstd_qry,a.ctgry_name,&quot;</span>
 					+ &quot;a.pstd_dt,a.post_crtd_by,b.rply_id,b.rply_rcvd,b.rply_dt,b.rply_crtd_by,b.rply_status FROM ask.ask_post_tbl a left join ask.ask_reply_tbl b on a.post_id=b.post_id left join ask.ask_user_tbl u1 on a.post_crtd_by  = u1.emp_id left join ask.ask_user_tbl u2 on b.rply_crtd_by  = u2.emp_id where a.pst_status='y' order by a.pstd_dt desc&quot;;
-<span class="nc bnc" id="L49" title="All 2 branches missed.">		} else if (searchModelInfo.getEmpid() &gt; 0) {</span>
-<span class="nc" id="L50">			queryObject = &quot;select u1.fst_name as postCreat,u1.last_name as postlast,u2.fst_name,u2.last_name,a.post_id,a.pstd_qry,a.ctgry_name,&quot;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">		} else if (searchModelInfo.getEmpid() &gt; 0) {</span>
+<span class="fc" id="L50">			queryObject = &quot;select u1.fst_name as postCreat,u1.last_name as postlast,u2.fst_name,u2.last_name,a.post_id,a.pstd_qry,a.ctgry_name,&quot;</span>
 					+ &quot;a.pstd_dt,a.post_crtd_by,b.rply_id,b.rply_rcvd,b.rply_dt,b.rply_crtd_by,b.rply_status FROM ask.ask_post_tbl a left join ask.ask_reply_tbl b on a.post_id=b.post_id left join ask.ask_user_tbl u1 on a.post_crtd_by  = u1.emp_id left join ask.ask_user_tbl u2 on b.rply_crtd_by  = u2.emp_id where a.pst_status='y' and a.post_crtd_by=&quot;
-<span class="nc" id="L52">					+ searchModelInfo.getEmpid()+&quot; order by a.pstd_dt desc&quot;;</span>
-<span class="nc bnc" id="L53" title="All 4 branches missed.">		} else if ((!searchModelInfo.getCategory().equalsIgnoreCase(&quot;&quot;)) &amp;&amp; (searchModelInfo.getEmpid() == 0)) {</span>
-<span class="nc" id="L54">			queryObject = &quot;select u1.fst_name as postCreat,u1.last_name as postlast,u2.fst_name,u2.last_name,a.post_id,a.pstd_qry,a.ctgry_name,&quot;</span>
+<span class="fc" id="L52">					+ searchModelInfo.getEmpid()+&quot; order by a.pstd_dt desc&quot;;</span>
+<span class="pc bpc" id="L53" title="2 of 4 branches missed.">		} else if ((!searchModelInfo.getCategory().equalsIgnoreCase(&quot;&quot;)) &amp;&amp; (searchModelInfo.getEmpid() == 0)) {</span>
+<span class="fc" id="L54">			queryObject = &quot;select u1.fst_name as postCreat,u1.last_name as postlast,u2.fst_name,u2.last_name,a.post_id,a.pstd_qry,a.ctgry_name,&quot;</span>
 					+ &quot;a.pstd_dt,a.post_crtd_by,b.rply_id,b.rply_rcvd,b.rply_dt,b.rply_crtd_by,b.rply_status FROM ask.ask_post_tbl a left join &quot;
 					+ &quot;ask.ask_reply_tbl b on a.post_id=b.post_id left join ask.ask_user_tbl u1 on a.post_crtd_by  = u1.emp_id left join ask.ask_user_tbl u2 on b.rply_crtd_by  = u2.emp_id where a.pst_status='y' and &quot;
-<span class="nc" id="L57">					+ &quot;a.ctgry_name='&quot; + searchModelInfo.getCategory() + &quot;' order by a.pstd_dt desc&quot;;</span>
+<span class="fc" id="L57">					+ &quot;a.ctgry_name='&quot; + searchModelInfo.getCategory() + &quot;' order by a.pstd_dt desc&quot;;</span>
 		}
 
-<span class="nc" id="L60">		return jdbcTemplate.query(queryObject, new RowMapper&lt;PostReplyTotal&gt;() {</span>
+<span class="fc" id="L60">		return jdbcTemplate.query(queryObject, new RowMapper&lt;PostReplyTotal&gt;() {</span>
 			/*
 			 * (non-Javadoc)
 			 * 
 			 * @see org.springframework.jdbc.core.RowMapper#mapRow(java.sql.ResultSet, int)
 			 */
 			public PostReplyTotal mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
-<span class="nc" id="L67">				final PostReplyTotal postObj = new PostReplyTotal();</span>
-<span class="nc" id="L68">				postObj.setPostId(resultSet.getInt(&quot;post_id&quot;));</span>
-<span class="nc" id="L69">				postObj.setFirstName(resultSet.getString(&quot;postCreat&quot;));</span>
-<span class="nc" id="L70">				postObj.setLastName(resultSet.getString(&quot;postlast&quot;));</span>
-<span class="nc" id="L71">				postObj.setPostedMsg(resultSet.getString(&quot;pstd_qry&quot;));</span>
-<span class="nc" id="L72">				postObj.setCtgryName(resultSet.getString(&quot;ctgry_name&quot;));</span>
-<span class="nc" id="L73">				postObj.setPostedDate(resultSet.getDate(&quot;pstd_dt&quot;));</span>
-<span class="nc" id="L74">				postObj.setPostedBy(resultSet.getInt(&quot;post_crtd_by&quot;));</span>
-<span class="nc" id="L75">				postObj.setReplyId(resultSet.getInt(&quot;rply_id&quot;));</span>
-<span class="nc" id="L76">				postObj.setRepliesMsgs(resultSet.getString(&quot;rply_rcvd&quot;));</span>
-<span class="nc" id="L77">				postObj.setReplyedDate(resultSet.getDate(&quot;rply_dt&quot;));</span>
-<span class="nc" id="L78">				postObj.setRepliedBy(resultSet.getInt(&quot;rply_crtd_by&quot;));</span>
-<span class="nc" id="L79">				postObj.setReplyStatus(resultSet.getString(&quot;rply_status&quot;));</span>
-<span class="nc" id="L80">				postObj.setReplyPostId(resultSet.getInt(&quot;post_id&quot;));</span>
-<span class="nc" id="L81">				postObj.setRplyFirstName(resultSet.getString(&quot;fst_name&quot;));</span>
-<span class="nc" id="L82">				postObj.setRplyLastName(resultSet.getString(&quot;last_name&quot;));</span>
+<span class="fc" id="L67">				final PostReplyTotal postObj = new PostReplyTotal();</span>
+<span class="fc" id="L68">				postObj.setPostId(resultSet.getInt(&quot;post_id&quot;));</span>
+<span class="fc" id="L69">				postObj.setFirstName(resultSet.getString(&quot;postCreat&quot;));</span>
+<span class="fc" id="L70">				postObj.setLastName(resultSet.getString(&quot;postlast&quot;));</span>
+<span class="fc" id="L71">				postObj.setPostedMsg(resultSet.getString(&quot;pstd_qry&quot;));</span>
+<span class="fc" id="L72">				postObj.setCtgryName(resultSet.getString(&quot;ctgry_name&quot;));</span>
+<span class="fc" id="L73">				postObj.setPostedDate(resultSet.getDate(&quot;pstd_dt&quot;));</span>
+<span class="fc" id="L74">				postObj.setPostedBy(resultSet.getInt(&quot;post_crtd_by&quot;));</span>
+<span class="fc" id="L75">				postObj.setReplyId(resultSet.getInt(&quot;rply_id&quot;));</span>
+<span class="fc" id="L76">				postObj.setRepliesMsgs(resultSet.getString(&quot;rply_rcvd&quot;));</span>
+<span class="fc" id="L77">				postObj.setReplyedDate(resultSet.getDate(&quot;rply_dt&quot;));</span>
+<span class="fc" id="L78">				postObj.setRepliedBy(resultSet.getInt(&quot;rply_crtd_by&quot;));</span>
+<span class="fc" id="L79">				postObj.setReplyStatus(resultSet.getString(&quot;rply_status&quot;));</span>
+<span class="fc" id="L80">				postObj.setReplyPostId(resultSet.getInt(&quot;post_id&quot;));</span>
+<span class="fc" id="L81">				postObj.setRplyFirstName(resultSet.getString(&quot;fst_name&quot;));</span>
+<span class="fc" id="L82">				postObj.setRplyLastName(resultSet.getString(&quot;last_name&quot;));</span>
 
-<span class="nc" id="L84">				return postObj;</span>
+<span class="fc" id="L84">				return postObj;</span>
 			}
 		});
 
@@ -95,24 +95,24 @@ import com.prokarma.viewpost.model.SearchInfoModel;
 	 * ReplyOnPost)
 	 */
 	public String insertReply(ReplyOnPost replyOnPost) throws ParseException {
-<span class="nc" id="L98">		final String sql = &quot;insert into ASK.ASK_REPLY_TBL values(ask.rply_id_seq.nextval,?,?,?,?,?,?,?)&quot;;</span>
-<span class="nc" id="L99">		String msg = &quot;&quot;;</span>
-<span class="nc" id="L100">		final DateFormat formatter = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="fc" id="L98">		final String sql = &quot;insert into ASK.ASK_REPLY_TBL values(ask.rply_id_seq.nextval,?,?,?,?,?,?,?)&quot;;</span>
+<span class="fc" id="L99">		String msg = &quot;&quot;;</span>
+<span class="fc" id="L100">		final DateFormat formatter = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
 
-<span class="nc" id="L102">		final Date today = new Date();</span>
+<span class="fc" id="L102">		final Date today = new Date();</span>
 
-<span class="nc" id="L104">		final Date str = formatter.parse(formatter.format(today));</span>
+<span class="fc" id="L104">		final Date str = formatter.parse(formatter.format(today));</span>
 
-<span class="nc" id="L106">		final java.sql.Date sqlDate = new java.sql.Date(str.getTime());</span>
-<span class="nc" id="L107">		final String status = &quot;y&quot;;</span>
+<span class="fc" id="L106">		final java.sql.Date sqlDate = new java.sql.Date(str.getTime());</span>
+<span class="fc" id="L107">		final String status = &quot;y&quot;;</span>
 		try {
-<span class="nc" id="L109">			jdbcTemplate.update(sql, new Object[] { replyOnPost.getReplyMsg(), sqlDate, replyOnPost.getReplyCreatedBy(),</span>
-<span class="nc" id="L110">					sqlDate, status, replyOnPost.getReplyCreatedBy(), replyOnPost.getPostId() });</span>
+<span class="pc" id="L109">			jdbcTemplate.update(sql, new Object[] { replyOnPost.getReplyMsg(), sqlDate, replyOnPost.getReplyCreatedBy(),</span>
+<span class="fc" id="L110">					sqlDate, status, replyOnPost.getReplyCreatedBy(), replyOnPost.getPostId() });</span>
 <span class="nc" id="L111">			msg = &quot;reply posted successfully&quot;;</span>
-<span class="nc" id="L112">		} catch (Exception e) {</span>
-<span class="nc" id="L113">			msg = &quot;unable to post a reply&quot;;</span>
+<span class="fc" id="L112">		} catch (Exception e) {</span>
+<span class="fc" id="L113">			msg = &quot;unable to post a reply&quot;;</span>
 <span class="nc" id="L114">		}</span>
-<span class="nc" id="L115">		return msg;</span>
+<span class="fc" id="L115">		return msg;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -26,7 +26,7 @@ import com.prokarma.viewpost.service.IViewService;
  */
 @RestController
 @RequestMapping(&quot;/ask&quot;)
-<span class="nc" id="L29">public class ViewController {</span>
+<span class="fc" id="L29">public class ViewController {</span>
 	/**
 	 * to use service layer
 	 */
@@ -40,8 +40,8 @@ import com.prokarma.viewpost.service.IViewService;
 	 */
 	@RequestMapping(value = &quot;/getAll&quot;, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity&lt;Set&lt;PostReplyModelSet&gt;&gt; getAll(@RequestBody final SearchInfoModel searchModelInfo) {
-<span class="nc" id="L43">		final Set&lt;PostReplyModelSet&gt; responseModel = service.getAllPostsAndReplies(searchModelInfo);</span>
-<span class="nc" id="L44">		return  new ResponseEntity&lt;&gt;(responseModel,HttpStatus.OK);</span>
+<span class="fc" id="L43">		final Set&lt;PostReplyModelSet&gt; responseModel = service.getAllPostsAndReplies(searchModelInfo);</span>
+<span class="fc" id="L44">		return  new ResponseEntity&lt;&gt;(responseModel,HttpStatus.OK);</span>
 	}
 
 	/**
@@ -51,7 +51,7 @@ import com.prokarma.viewpost.service.IViewService;
 	 */
 	@RequestMapping(value = &quot;/replyOnPost&quot;, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseModelOnRply replyOnPost(@RequestBody final ReplyOnPost replyOnPost) throws ParseException {
-<span class="nc" id="L54">		return service.replyToPost(replyOnPost);</span>
+<span class="fc" id="L54">		return service.replyToPost(replyOnPost);</span>
 
 	}
 

@@ -20,7 +20,7 @@ import com.prokarma.userprofile.service.IRetrieveUserProfileService;
 @RestController
 @EnableWebMvc
 @RequestMapping(&quot;/ask&quot;)
-<span class="nc" id="L23">public class RetrieveUserProfileController implements Serializable {</span>
+<span class="fc" id="L23">public class RetrieveUserProfileController implements Serializable {</span>
 
 	/**
 	 * 
@@ -44,8 +44,8 @@ import com.prokarma.userprofile.service.IRetrieveUserProfileService;
 	@RequestMapping(value = &quot;/editUser/{emp_id}&quot;, method = RequestMethod.GET)
 	
  public ResponseEntity&lt;UserProfileBean&gt; getUserProfile(@PathVariable(value=&quot;emp_id&quot;) final int emp_id) {
-<span class="nc" id="L47">		final  UserProfileBean userProfileBean=editUserService.getUserProfile(emp_id);</span>
-<span class="nc" id="L48">		  return new ResponseEntity&lt;&gt;(userProfileBean,HttpStatus.OK);</span>
+<span class="fc" id="L47">		final  UserProfileBean userProfileBean=editUserService.getUserProfile(emp_id);</span>
+<span class="fc" id="L48">		  return new ResponseEntity&lt;&gt;(userProfileBean,HttpStatus.OK);</span>
      
     }
 }

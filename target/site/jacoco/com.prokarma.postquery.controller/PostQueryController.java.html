@@ -32,7 +32,7 @@ import com.prokarma.postquery.service.IPostQueryService;
 @RestController
 @EnableWebMvc
 @RequestMapping(&quot;/ask&quot;)
-<span class="nc" id="L35">public class PostQueryController implements Serializable{</span>
+<span class="fc" id="L35">public class PostQueryController implements Serializable{</span>
 	
 	/**
 	 * 
@@ -48,7 +48,7 @@ import com.prokarma.postquery.service.IPostQueryService;
 	/**
 	 * 
 	 */
-<span class="nc" id="L51">	final transient ResponseMsgModel responsemodel=new ResponseMsgModel();</span>
+<span class="fc" id="L51">	final transient ResponseMsgModel responsemodel=new ResponseMsgModel();</span>
 	
 	/**
 	 * @param postquerymodel
@@ -58,10 +58,10 @@ import com.prokarma.postquery.service.IPostQueryService;
 	@RequestMapping(value = &quot;/postquery&quot;, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public 	 ResponseEntity&lt;ResponseMsgModel&gt; resetRequest(@RequestBody final PostQueryModel postquerymodel) throws ParseException {
 
-<span class="nc" id="L61">		final String response = postQueryService.postquestion(postquerymodel);</span>
+<span class="fc" id="L61">		final String response = postQueryService.postquestion(postquerymodel);</span>
 	
-<span class="nc" id="L63">		responsemodel.setResponseMsg(response);</span>
-<span class="nc" id="L64">		return new ResponseEntity&lt;&gt;(responsemodel, HttpStatus.OK);</span>
+<span class="fc" id="L63">		responsemodel.setResponseMsg(response);</span>
+<span class="fc" id="L64">		return new ResponseEntity&lt;&gt;(responsemodel, HttpStatus.OK);</span>
 
 	}
 

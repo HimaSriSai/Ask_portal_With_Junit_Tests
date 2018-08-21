@@ -12,7 +12,7 @@ import com.prokarma.userprofile.model.UserProfileBean;
  * @author Prokarma
  *
  */
-<span class="nc" id="L15">public class UpdateUserProfileServiceImpl implements UpdateUserProfileService {</span>
+<span class="fc" id="L15">public class UpdateUserProfileServiceImpl implements UpdateUserProfileService {</span>
 
 	/**
 	 * 
@@ -35,21 +35,21 @@ import com.prokarma.userprofile.model.UserProfileBean;
 	 */
 	@Override
 	public ResponseBean updateUser(final UserProfileBean userModel) {
-<span class="nc" id="L38">		ResponseBean responseBean = new ResponseBean();</span>
-<span class="nc" id="L39">		int empId = 0;</span>
+<span class="fc" id="L38">		ResponseBean responseBean = new ResponseBean();</span>
+<span class="fc" id="L39">		int empId = 0;</span>
 		try {
-<span class="nc" id="L41">			empId = newUserProfileDao.giveEmpId(userModel.getFstname(), userModel.getLastname());</span>
-<span class="nc" id="L42">		} catch (Exception e) {</span>
-<span class="nc" id="L43">			empId = 0;</span>
-<span class="nc" id="L44">		}</span>
-<span class="nc bnc" id="L45" title="All 4 branches missed.">		if (empId == 0||(empId==userModel.getEmpid())) {</span>
-<span class="nc" id="L46">			responseBean.setResponseMessage(updateData.updateProfile(userModel));</span>
+<span class="fc" id="L41">			empId = newUserProfileDao.giveEmpId(userModel.getFstname(), userModel.getLastname());</span>
+<span class="fc" id="L42">		} catch (Exception e) {</span>
+<span class="fc" id="L43">			empId = 0;</span>
+<span class="fc" id="L44">		}</span>
+<span class="pc bpc" id="L45" title="1 of 4 branches missed.">		if (empId == 0||(empId==userModel.getEmpid())) {</span>
+<span class="fc" id="L46">			responseBean.setResponseMessage(updateData.updateProfile(userModel));</span>
 		} else {
-<span class="nc" id="L48">			responseBean.setResponseMessage(&quot;The combination of first name as '&quot; + userModel.getFstname()</span>
-<span class="nc" id="L49">					+ &quot;' and last name as '&quot; + userModel.getLastname() + &quot;' already exist&quot;);</span>
+<span class="fc" id="L48">			responseBean.setResponseMessage(&quot;The combination of first name as '&quot; + userModel.getFstname()</span>
+<span class="fc" id="L49">					+ &quot;' and last name as '&quot; + userModel.getLastname() + &quot;' already exist&quot;);</span>
 		}
 
-<span class="nc" id="L52">		return responseBean;</span>
+<span class="fc" id="L52">		return responseBean;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

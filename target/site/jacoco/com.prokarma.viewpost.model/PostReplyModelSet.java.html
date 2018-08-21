@@ -7,7 +7,7 @@ import java.util.Set;
  * @author prokarma
  *
  */
-<span class="nc" id="L10">public class PostReplyModelSet {</span>
+<span class="fc" id="L10">public class PostReplyModelSet {</span>
 	/**
 	 * 
 	 */
@@ -16,35 +16,35 @@ import java.util.Set;
 	/**
 	 * 
 	 */
-<span class="nc" id="L19">	private Set&lt;ReplyQueriesInfo&gt; rplyQueriesInfosSet = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L19">	private Set&lt;ReplyQueriesInfo&gt; rplyQueriesInfosSet = new HashSet&lt;&gt;();</span>
 
 	/**
 	 * @return
 	 */
 	public PostQueryInfo getPostQueryObj() {
-<span class="nc" id="L25">		return postQueryObj;</span>
+<span class="fc" id="L25">		return postQueryObj;</span>
 	}
 
 	/**
 	 * @param postQueryObj
 	 */
 	public void setPostQueryObj(final PostQueryInfo postQueryObj) {
-<span class="nc" id="L32">		this.postQueryObj = postQueryObj;</span>
-<span class="nc" id="L33">	}</span>
+<span class="fc" id="L32">		this.postQueryObj = postQueryObj;</span>
+<span class="fc" id="L33">	}</span>
 
 	/**
 	 * @return
 	 */
 	public Set&lt;ReplyQueriesInfo&gt; getRplyQueriesInfosSet() {
-<span class="nc" id="L39">		return rplyQueriesInfosSet;</span>
+<span class="fc" id="L39">		return rplyQueriesInfosSet;</span>
 	}
 
 	/**
 	 * @param rplyQueriesInfosSet
 	 */
 	public void setRplyQueriesInfosSet(final Set&lt;ReplyQueriesInfo&gt; rplyQueriesInfosSet) {
-<span class="nc" id="L46">		this.rplyQueriesInfosSet = rplyQueriesInfosSet;</span>
-<span class="nc" id="L47">	}</span>
+<span class="fc" id="L46">		this.rplyQueriesInfosSet = rplyQueriesInfosSet;</span>
+<span class="fc" id="L47">	}</span>
 
 	/*
 	 * (non-Javadoc)
@@ -53,10 +53,10 @@ import java.util.Set;
 	 */
 	@Override
 	public int hashCode() {
-<span class="nc" id="L56">		final int prime = 31;</span>
-<span class="nc" id="L57">		int result = 1;</span>
-<span class="nc bnc" id="L58" title="All 2 branches missed.">		result = prime * result + ((postQueryObj == null) ? 0 : postQueryObj.hashCode());</span>
-<span class="nc" id="L59">		return result;</span>
+<span class="fc" id="L56">		final int prime = 31;</span>
+<span class="fc" id="L57">		int result = 1;</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">		result = prime * result + ((postQueryObj == null) ? 0 : postQueryObj.hashCode());</span>
+<span class="fc" id="L59">		return result;</span>
 	}
 
 	/*
@@ -66,19 +66,19 @@ import java.util.Set;
 	 */
 	@Override
 	public boolean equals(Object obj) {
-<span class="nc bnc" id="L69" title="All 2 branches missed.">		if (this == obj)</span>
-<span class="nc" id="L70">			return true;</span>
-<span class="nc bnc" id="L71" title="All 2 branches missed.">		if (obj == null)</span>
-<span class="nc" id="L72">			return false;</span>
-<span class="nc bnc" id="L73" title="All 2 branches missed.">		if (getClass() != obj.getClass())</span>
-<span class="nc" id="L74">			return false;</span>
-<span class="nc" id="L75">		PostReplyModelSet other = (PostReplyModelSet) obj;</span>
-<span class="nc bnc" id="L76" title="All 2 branches missed.">		if (postQueryObj == null) {</span>
-<span class="nc bnc" id="L77" title="All 2 branches missed.">			if (other.postQueryObj != null)</span>
-<span class="nc" id="L78">				return false;</span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">		} else if (!postQueryObj.equals(other.postQueryObj))</span>
-<span class="nc" id="L80">			return false;</span>
-<span class="nc" id="L81">		return true;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		if (this == obj)</span>
+<span class="fc" id="L70">			return true;</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">		if (obj == null)</span>
+<span class="fc" id="L72">			return false;</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">		if (getClass() != obj.getClass())</span>
+<span class="fc" id="L74">			return false;</span>
+<span class="fc" id="L75">		PostReplyModelSet other = (PostReplyModelSet) obj;</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">		if (postQueryObj == null) {</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">			if (other.postQueryObj != null)</span>
+<span class="fc" id="L78">				return false;</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">		} else if (!postQueryObj.equals(other.postQueryObj))</span>
+<span class="fc" id="L80">			return false;</span>
+<span class="fc" id="L81">		return true;</span>
 	}
 
 }

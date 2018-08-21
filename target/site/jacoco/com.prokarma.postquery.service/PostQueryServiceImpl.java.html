@@ -16,7 +16,7 @@ import com.prokarma.searchquery.dao.ISearchDao;
  *
  */
 @Service
-<span class="nc" id="L19">public class PostQueryServiceImpl implements IPostQueryService {</span>
+<span class="fc" id="L19">public class PostQueryServiceImpl implements IPostQueryService {</span>
 
 	/**
 	 * 
@@ -36,24 +36,24 @@ import com.prokarma.searchquery.dao.ISearchDao;
 	 */
 	@Override
 	public String postquestion(final PostQueryModel postquerymodel) throws ParseException {
-<span class="nc" id="L39">		String retVal = &quot;&quot;;</span>
-<span class="nc" id="L40">		int count = 0;</span>
-<span class="nc bnc" id="L41" title="All 2 branches missed.">		if (postquerymodel.getOther().equals(&quot;&quot;)) {</span>
-<span class="nc" id="L42">			retVal = postqrydao.postque(postquerymodel);</span>
+<span class="fc" id="L39">		String retVal = &quot;&quot;;</span>
+<span class="fc" id="L40">		int count = 0;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">		if (postquerymodel.getOther().equals(&quot;&quot;)) {</span>
+<span class="fc" id="L42">			retVal = postqrydao.postque(postquerymodel);</span>
 		} else {
-<span class="nc" id="L44">			List&lt;String&gt; ctrgyNmaes = searchDao.getCategory();</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">			for (String selectedCtrgy : ctrgyNmaes) {</span>
-<span class="nc bnc" id="L46" title="All 2 branches missed.">				if (selectedCtrgy.equalsIgnoreCase(postquerymodel.getOther())) {</span>
-<span class="nc" id="L47">					count++;</span>
-<span class="nc" id="L48">					retVal = &quot;The catergory '&quot; + postquerymodel.getOther() + &quot;' already exist&quot;;</span>
-<span class="nc" id="L49">					break;</span>
+<span class="fc" id="L44">			List&lt;String&gt; ctrgyNmaes = searchDao.getCategory();</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">			for (String selectedCtrgy : ctrgyNmaes) {</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">				if (selectedCtrgy.equalsIgnoreCase(postquerymodel.getOther())) {</span>
+<span class="fc" id="L47">					count++;</span>
+<span class="fc" id="L48">					retVal = &quot;The catergory '&quot; + postquerymodel.getOther() + &quot;' already exist&quot;;</span>
+<span class="fc" id="L49">					break;</span>
 				}
-<span class="nc" id="L51">			}</span>
-<span class="nc bnc" id="L52" title="All 2 branches missed.">			if (count == 0) {</span>
-<span class="nc" id="L53">				retVal = postqrydao.postque(postquerymodel);</span>
+<span class="fc" id="L51">			}</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">			if (count == 0) {</span>
+<span class="fc" id="L53">				retVal = postqrydao.postque(postquerymodel);</span>
 			}
 		}
-<span class="nc" id="L56">		return retVal;</span>
+<span class="fc" id="L56">		return retVal;</span>
 
 	}
 

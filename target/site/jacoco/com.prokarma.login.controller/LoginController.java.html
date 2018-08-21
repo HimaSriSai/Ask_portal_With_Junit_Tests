@@ -19,7 +19,7 @@ import com.prokarma.login.service.ILoginService;
  */
 @RestController
 @RequestMapping(&quot;/ask&quot;)
-<span class="nc" id="L22">public class LoginController {</span>
+<span class="fc" id="L22">public class LoginController {</span>
  /**
    * to use service layer
  */
@@ -31,7 +31,7 @@ import com.prokarma.login.service.ILoginService;
    */
   @RequestMapping(value = &quot;/sampleLogin&quot;, method = RequestMethod.GET)
   public String sample() {
-<span class="nc" id="L34">    return &quot;welcome to login controller&quot;;</span>
+<span class="fc" id="L34">    return &quot;welcome to login controller&quot;;</span>
   }
   
  
@@ -45,8 +45,8 @@ import com.prokarma.login.service.ILoginService;
       produces = MediaType.APPLICATION_JSON_VALUE)
 
   public ResponseModel checkCredentials(@RequestBody final UserModel userModel) {
-<span class="nc" id="L48"> System.out.println(&quot;IN controller&quot;);</span>
-<span class="nc" id="L49">	  return iLoginService.validLogin(userModel);</span>
+<span class="fc" id="L48"> System.out.println(&quot;IN controller&quot;);</span>
+<span class="fc" id="L49">	  return iLoginService.validLogin(userModel);</span>
    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

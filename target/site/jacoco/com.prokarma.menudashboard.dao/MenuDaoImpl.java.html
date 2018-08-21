@@ -13,11 +13,11 @@ import org.springframework.stereotype.Repository;
  */
 @Component
 @Repository
-<span class="nc" id="L16">public class MenuDaoImpl implements IMenuDao {</span>
+<span class="fc" id="L16">public class MenuDaoImpl implements IMenuDao {</span>
 	/**
 	 * to hit dataBase
 	 */
-<span class="nc" id="L20">	static final Logger LOGGER = Logger.getLogger(MenuDaoImpl.class);</span>
+<span class="fc" id="L20">	static final Logger LOGGER = Logger.getLogger(MenuDaoImpl.class);</span>
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -28,12 +28,12 @@ import org.springframework.stereotype.Repository;
 	 * hit database and get role name
 	 */
 	public List&lt;String&gt; getUserRoleName(String userName) {
-<span class="nc" id="L31">		final String query = &quot;select role_name from ask.ask_role_tbl role JOIN ask.ask_map_roleCtgry map on role.role_id=map.role_id WHERE emp_id=(select  emp_id from ask.ask_user_tbl where u_name=?)&quot;;</span>
-<span class="nc" id="L32">		List&lt;String&gt; roleName = null;</span>
+<span class="fc" id="L31">		final String query = &quot;select role_name from ask.ask_role_tbl role JOIN ask.ask_map_roleCtgry map on role.role_id=map.role_id WHERE emp_id=(select  emp_id from ask.ask_user_tbl where u_name=?)&quot;;</span>
+<span class="fc" id="L32">		List&lt;String&gt; roleName = null;</span>
 
-<span class="nc" id="L34">		roleName = jdbcTemplate.queryForList(query, String.class, userName);</span>
+<span class="fc" id="L34">		roleName = jdbcTemplate.queryForList(query, String.class, userName);</span>
 
-<span class="nc" id="L36">		return roleName;</span>
+<span class="fc" id="L36">		return roleName;</span>
 
 	}
 }

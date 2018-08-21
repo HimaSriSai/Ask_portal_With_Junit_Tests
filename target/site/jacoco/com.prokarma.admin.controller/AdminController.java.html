@@ -17,7 +17,7 @@ import com.prokarma.admin.services.IAdminService;
 
 @RestController
 @RequestMapping(&quot;/ask&quot;)
-<span class="nc" id="L20">public class AdminController {</span>
+<span class="fc" id="L20">public class AdminController {</span>
 
 	@Autowired
 	private IAdminService iAdminService;
@@ -25,18 +25,18 @@ import com.prokarma.admin.services.IAdminService;
 	@RequestMapping(value = &quot;/addEmpAsSme&quot;, consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity&lt;ResponseMsg&gt; addEmpAsSme(@RequestBody RequestDetails requestDetails) {
 
-<span class="nc" id="L28">		ResponseMsg responseMsg = iAdminService.addAsSme(requestDetails);</span>
+<span class="fc" id="L28">		ResponseMsg responseMsg = iAdminService.addAsSme(requestDetails);</span>
 
-<span class="nc" id="L30">		return new ResponseEntity&lt;&gt;(responseMsg, HttpStatus.OK);</span>
+<span class="fc" id="L30">		return new ResponseEntity&lt;&gt;(responseMsg, HttpStatus.OK);</span>
 
 	}
 
 	@RequestMapping(value = &quot;/getNames&quot;, produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 	public @ResponseBody ResponseEntity&lt;FullNamesList&gt; getNames() {
 
-<span class="nc" id="L37">		FullNamesList FullNamesList = iAdminService.getFullNames();</span>
+<span class="fc" id="L37">		FullNamesList FullNamesList = iAdminService.getFullNames();</span>
 
-<span class="nc" id="L39">		return new ResponseEntity&lt;&gt;(FullNamesList, HttpStatus.OK);</span>
+<span class="fc" id="L39">		return new ResponseEntity&lt;&gt;(FullNamesList, HttpStatus.OK);</span>
 	}
 
 }

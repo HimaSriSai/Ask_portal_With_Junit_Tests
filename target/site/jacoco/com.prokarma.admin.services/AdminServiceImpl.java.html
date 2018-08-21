@@ -15,7 +15,7 @@ import com.prokarma.admin.model.ResponseMsg;
  *
  */
 @Component
-<span class="nc" id="L18">public class AdminServiceImpl implements IAdminService {</span>
+<span class="fc" id="L18">public class AdminServiceImpl implements IAdminService {</span>
 
 	/**
 	 * 
@@ -32,10 +32,10 @@ import com.prokarma.admin.model.ResponseMsg;
 	 */
 	@Override
 	final public ResponseMsg addAsSme(RequestDetails requestDetails) {
-<span class="nc" id="L35">		ResponseMsg responseMsg = new ResponseMsg();</span>
-<span class="nc" id="L36">		String fullName = requestDetails.getFullName();</span>
-<span class="nc" id="L37">		String firstName = fullName.substring(0, fullName.indexOf(&quot; &quot;)).trim();</span>
-<span class="nc" id="L38">		String lastName = fullName.substring(fullName.indexOf(&quot; &quot;)).trim();</span>
+<span class="fc" id="L35">		ResponseMsg responseMsg = new ResponseMsg();</span>
+<span class="fc" id="L36">		String fullName = requestDetails.getFullName();</span>
+<span class="fc" id="L37">		String firstName = fullName.substring(0, fullName.indexOf(&quot; &quot;)).trim();</span>
+<span class="fc" id="L38">		String lastName = fullName.substring(fullName.indexOf(&quot; &quot;)).trim();</span>
 		try {
 <span class="nc" id="L40">			requestDetails.setEmpId(iAdminDAO.getEmpIdUsingName(firstName, lastName));</span>
 <span class="nc" id="L41">			int roleId = iAdminDAO.getSmeRoleId();</span>
@@ -48,16 +48,16 @@ import com.prokarma.admin.model.ResponseMsg;
 <span class="nc" id="L48">				iAdminDAO.addEmpAsSme(requestDetails.getEmpId(), roleId, finalCtrgyId);</span>
 <span class="nc" id="L49">				responseMsg.setResponseMsg(&quot;successfully added '&quot; + requestDetails.getFullName() + &quot;' as SME&quot;);</span>
 			}
-<span class="nc" id="L51">		} catch (Exception e) {</span>
-<span class="nc" id="L52">			responseMsg.setResponseMsg(&quot;'&quot; + requestDetails.getFullName() + &quot;' is not a vaild name&quot;);</span>
+<span class="fc" id="L51">		} catch (Exception e) {</span>
+<span class="fc" id="L52">			responseMsg.setResponseMsg(&quot;'&quot; + requestDetails.getFullName() + &quot;' is not a vaild name&quot;);</span>
 <span class="nc" id="L53">		}</span>
-<span class="nc" id="L54">		return responseMsg;</span>
+<span class="fc" id="L54">		return responseMsg;</span>
 	}
 
 	public FullNamesList getFullNames() {
-<span class="nc" id="L58">		FullNamesList fullNamesList = new FullNamesList();</span>
-<span class="nc" id="L59">		fullNamesList.setFullNames(iAdminDAO.getNamesFormUserTbl());</span>
-<span class="nc" id="L60">		return fullNamesList;</span>
+<span class="fc" id="L58">		FullNamesList fullNamesList = new FullNamesList();</span>
+<span class="fc" id="L59">		fullNamesList.setFullNames(iAdminDAO.getNamesFormUserTbl());</span>
+<span class="fc" id="L60">		return fullNamesList;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

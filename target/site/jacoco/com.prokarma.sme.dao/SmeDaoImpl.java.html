@@ -14,66 +14,66 @@ import com.prokarma.sme.model.UpdatePostQuery;
 import com.prokarma.sme.model.UpdateReplyQuery;
 
 @Component
-<span class="nc" id="L17">public class SmeDaoImpl implements ISmeDao {</span>
+<span class="fc" id="L17">public class SmeDaoImpl implements ISmeDao {</span>
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
 	public List&lt;String&gt; ctrgyNameOnSme(int empId) {
-<span class="nc" id="L23">		String query = &quot;select a.ctgry_name from ask.ask_ctgry_tbl a left join ask.ask_map_roleCtgry b on a.ctgry_id=b.ctgry_id where emp_id=?&quot;;</span>
-<span class="nc" id="L24">		List&lt;String&gt; ctrgyNameList = null;</span>
+<span class="fc" id="L23">		String query = &quot;select a.ctgry_name from ask.ask_ctgry_tbl a left join ask.ask_map_roleCtgry b on a.ctgry_id=b.ctgry_id where emp_id=?&quot;;</span>
+<span class="fc" id="L24">		List&lt;String&gt; ctrgyNameList = null;</span>
 
-<span class="nc" id="L26">		ctrgyNameList = jdbcTemplate.queryForList(query, String.class, empId);</span>
+<span class="fc" id="L26">		ctrgyNameList = jdbcTemplate.queryForList(query, String.class, empId);</span>
 
-<span class="nc" id="L28">		return ctrgyNameList;</span>
+<span class="fc" id="L28">		return ctrgyNameList;</span>
 	}
 
 	public String updatePostStatus(UpdatePostQuery updatePostQuery) throws ParseException {
-<span class="nc" id="L32">		String query = &quot;update ask.ask_post_tbl set lst_updt_by=? ,lst_updt_dt=?,pst_status='n' where post_id=?&quot;;</span>
+<span class="fc" id="L32">		String query = &quot;update ask.ask_post_tbl set lst_updt_by=? ,lst_updt_dt=?,pst_status='n' where post_id=?&quot;;</span>
 		String response;
-<span class="nc" id="L34">		DateFormat formatter = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="fc" id="L34">		DateFormat formatter = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
 
-<span class="nc" id="L36">		Date today = new Date();</span>
+<span class="fc" id="L36">		Date today = new Date();</span>
 
-<span class="nc" id="L38">		java.util.Date str = formatter.parse(formatter.format(today));</span>
+<span class="fc" id="L38">		java.util.Date str = formatter.parse(formatter.format(today));</span>
 
-<span class="nc" id="L40">		java.sql.Date sqlDate = new java.sql.Date(str.getTime());</span>
+<span class="fc" id="L40">		java.sql.Date sqlDate = new java.sql.Date(str.getTime());</span>
 		try {
-<span class="nc" id="L42">			final int i = jdbcTemplate.update(query, updatePostQuery.getLastUpdatedByEmpId(), sqlDate,</span>
-<span class="nc" id="L43">					updatePostQuery.getPostId());</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">			if (i &gt; 0) {</span>
+<span class="fc" id="L42">			final int i = jdbcTemplate.update(query, updatePostQuery.getLastUpdatedByEmpId(), sqlDate,</span>
+<span class="fc" id="L43">					updatePostQuery.getPostId());</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">			if (i &gt; 0) {</span>
 <span class="nc" id="L45">				response = &quot;successfully deleted posted query&quot;;</span>
 			} else {
-<span class="nc" id="L47">				response = &quot;might be 'lastUpdatedByEmpId' or 'postId' informations are not correct&quot;;</span>
+<span class="fc" id="L47">				response = &quot;might be 'lastUpdatedByEmpId' or 'postId' informations are not correct&quot;;</span>
 			}
-<span class="nc" id="L49">		} catch (Exception e) {</span>
-<span class="nc" id="L50">			response = &quot;error while deleting posted query&quot;;</span>
-<span class="nc" id="L51">		}</span>
-<span class="nc" id="L52">		return response;</span>
+<span class="fc" id="L49">		} catch (Exception e) {</span>
+<span class="fc" id="L50">			response = &quot;error while deleting posted query&quot;;</span>
+<span class="fc" id="L51">		}</span>
+<span class="fc" id="L52">		return response;</span>
 	}
 
 	public String updateReplyStatus(UpdateReplyQuery updateReplyQuery) throws ParseException {
-<span class="nc" id="L56">		String query = &quot;update ask.ask_reply_tbl set lst_updt_by=? ,lst_updt_dt=?,rply_status='n' where rply_id=?&quot;;</span>
+<span class="fc" id="L56">		String query = &quot;update ask.ask_reply_tbl set lst_updt_by=? ,lst_updt_dt=?,rply_status='n' where rply_id=?&quot;;</span>
 		String response;
-<span class="nc" id="L58">		DateFormat formatter = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
+<span class="fc" id="L58">		DateFormat formatter = new SimpleDateFormat(&quot;dd/MM/yyyy&quot;);</span>
 
-<span class="nc" id="L60">		Date today = new Date();</span>
+<span class="fc" id="L60">		Date today = new Date();</span>
 
-<span class="nc" id="L62">		java.util.Date str = formatter.parse(formatter.format(today));</span>
+<span class="fc" id="L62">		java.util.Date str = formatter.parse(formatter.format(today));</span>
 
-<span class="nc" id="L64">		java.sql.Date sqlDate = new java.sql.Date(str.getTime());</span>
+<span class="fc" id="L64">		java.sql.Date sqlDate = new java.sql.Date(str.getTime());</span>
 		try {
-<span class="nc" id="L66">			final int i = jdbcTemplate.update(query, updateReplyQuery.getLastUpdatedByEmpId(), sqlDate,</span>
-<span class="nc" id="L67">					updateReplyQuery.getReplyId());</span>
-<span class="nc bnc" id="L68" title="All 2 branches missed.">			if (i &gt; 0) {</span>
+<span class="fc" id="L66">			final int i = jdbcTemplate.update(query, updateReplyQuery.getLastUpdatedByEmpId(), sqlDate,</span>
+<span class="fc" id="L67">					updateReplyQuery.getReplyId());</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">			if (i &gt; 0) {</span>
 <span class="nc" id="L69">				response = &quot;successfully deleted reply query&quot;;</span>
 			} else {
-<span class="nc" id="L71">				response = &quot;might be 'lastUpdatedByEmpId' or 'replyId' information are not correct&quot;;</span>
+<span class="fc" id="L71">				response = &quot;might be 'lastUpdatedByEmpId' or 'replyId' information are not correct&quot;;</span>
 			}
-<span class="nc" id="L73">		} catch (Exception e) {</span>
-<span class="nc" id="L74">			response = &quot;error while deleting reply query&quot;;</span>
-<span class="nc" id="L75">		}</span>
-<span class="nc" id="L76">		return response;</span>
+<span class="fc" id="L73">		} catch (Exception e) {</span>
+<span class="fc" id="L74">			response = &quot;error while deleting reply query&quot;;</span>
+<span class="fc" id="L75">		}</span>
+<span class="fc" id="L76">		return response;</span>
 	}
 
 }

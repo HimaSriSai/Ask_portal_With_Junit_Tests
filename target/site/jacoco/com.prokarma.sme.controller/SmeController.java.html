@@ -17,26 +17,26 @@ import com.prokarma.sme.services.ISmeService;
 
 @RestController
 @RequestMapping(&quot;/ask&quot;)
-<span class="nc" id="L20">public class SmeController {</span>
+<span class="fc" id="L20">public class SmeController {</span>
 
 	@Autowired
 	private ISmeService iSmeService;
 
 	@RequestMapping(value = &quot;/getCtrgyName&quot;, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public SmeCtrgyName replyOnPost(@RequestBody final SmeCtrgyName smeCtrgyName) {
-<span class="nc" id="L27">	return iSmeService.getCtrgyName(smeCtrgyName.getEmpId());</span>
+<span class="fc" id="L27">	return iSmeService.getCtrgyName(smeCtrgyName.getEmpId());</span>
 		
 	}
 
 	@RequestMapping(value = &quot;/updatePostStatus&quot;, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseOnUpdate updatePostStatus(@RequestBody final UpdatePostQuery updatePostQuery) throws ParseException {
-<span class="nc" id="L33">	  return iSmeService.updatePost(updatePostQuery);</span>
+<span class="fc" id="L33">	  return iSmeService.updatePost(updatePostQuery);</span>
 		 
 	}
 	
 	@RequestMapping(value = &quot;/updateReplyStatus&quot;, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseOnUpdate updateReplyStatus(@RequestBody final UpdateReplyQuery updateReplyQuery) throws ParseException {
-<span class="nc" id="L39">	  return iSmeService.updateReply(updateReplyQuery);</span>
+<span class="fc" id="L39">	  return iSmeService.updateReply(updateReplyQuery);</span>
 		
 	}
 }

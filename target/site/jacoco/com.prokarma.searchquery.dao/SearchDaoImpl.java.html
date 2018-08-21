@@ -16,7 +16,7 @@ import com.prokarma.common.util.Ask_AOP;
  * @author prokarma
  *
  */
-<span class="nc" id="L19">public class SearchDaoImpl implements ISearchDao {</span>
+<span class="fc" id="L19">public class SearchDaoImpl implements ISearchDao {</span>
 
 	
 	
@@ -35,9 +35,9 @@ import com.prokarma.common.util.Ask_AOP;
 	@Override
 	public List&lt;String&gt; getCategory() {
 
-<span class="nc" id="L38">		final String query = &quot;select ctgry_name from ask.ASK_CTGRY_TBL&quot;;</span>
+<span class="fc" id="L38">		final String query = &quot;select ctgry_name from ask.ASK_CTGRY_TBL&quot;;</span>
 
-<span class="nc" id="L40">		List&lt;String&gt; employeelist = jdbctemplate.query(query, new RowMapper&lt;String&gt;() {</span>
+<span class="fc" id="L40">		List&lt;String&gt; employeelist = jdbctemplate.query(query, new RowMapper&lt;String&gt;() {</span>
 
 			/*
 			 * (non-Javadoc)
@@ -46,12 +46,12 @@ import com.prokarma.common.util.Ask_AOP;
 			 */
 			public String mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
 
-<span class="nc" id="L49">				return resultSet.getString(1);</span>
+<span class="fc" id="L49">				return resultSet.getString(1);</span>
 
 			}
 		});
 
-<span class="nc" id="L54">		return employeelist;</span>
+<span class="fc" id="L54">		return employeelist;</span>
 
 	}
 

@@ -7,25 +7,25 @@ package com.prokarma.common.util;
  * @author Prokarma
  *
  */
-<span class="nc" id="L10">public class CommonUtil {</span>
+<span class="fc" id="L10">public class CommonUtil {</span>
 	
 public static String formatEmployeeName(String firName,String lName)
 	{
-<span class="nc bnc" id="L14" title="All 4 branches missed.">		if(firName!=null &amp;&amp; lName!=null) {</span>
-<span class="nc" id="L15">			return toInitCap(lName.trim()) + &quot; &quot; + toInitCap(firName.trim());</span>
+<span class="pc bpc" id="L14" title="1 of 4 branches missed.">		if(firName!=null &amp;&amp; lName!=null) {</span>
+<span class="fc" id="L15">			return toInitCap(lName.trim()) + &quot; &quot; + toInitCap(firName.trim());</span>
 		}
-<span class="nc" id="L17">		return &quot;&quot;;		</span>
+<span class="fc" id="L17">		return &quot;&quot;;		</span>
 	}
 	
 	   public static  String toInitCap(String param) {
-<span class="nc bnc" id="L21" title="All 4 branches missed.">	        if (param != null &amp;&amp; param.length() &gt; 0) {</span>
-<span class="nc" id="L22">	            char[] charArray = param.toCharArray();</span>
-<span class="nc" id="L23">	            charArray[0] = Character.toUpperCase(charArray[0]);</span>
+<span class="pc bpc" id="L21" title="1 of 4 branches missed.">	        if (param != null &amp;&amp; param.length() &gt; 0) {</span>
+<span class="fc" id="L22">	            char[] charArray = param.toCharArray();</span>
+<span class="fc" id="L23">	            charArray[0] = Character.toUpperCase(charArray[0]);</span>
 	            // set capital letter to first position
-<span class="nc" id="L25">	            return new String(charArray);</span>
+<span class="fc" id="L25">	            return new String(charArray);</span>
 	            // return desired output
 	        } else {
-<span class="nc" id="L28">	            return &quot;&quot;;</span>
+<span class="fc" id="L28">	            return &quot;&quot;;</span>
 	        }
 	    }
 	   

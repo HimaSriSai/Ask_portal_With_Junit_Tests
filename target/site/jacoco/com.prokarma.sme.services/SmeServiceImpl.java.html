@@ -12,26 +12,26 @@ import com.prokarma.sme.model.UpdatePostQuery;
 import com.prokarma.sme.model.UpdateReplyQuery;
 
 @Component
-<span class="nc" id="L15">public class SmeServiceImpl implements ISmeService {</span>
+<span class="fc" id="L15">public class SmeServiceImpl implements ISmeService {</span>
 	
 	@Autowired
 	private ISmeDao iSmeDao;
 	
 	public SmeCtrgyName getCtrgyName(int empId) {
-<span class="nc" id="L21">		SmeCtrgyName responseCtrgyName =new SmeCtrgyName();</span>
-<span class="nc" id="L22">		responseCtrgyName.setCtrgyName(iSmeDao.ctrgyNameOnSme(empId));</span>
-<span class="nc" id="L23">		return responseCtrgyName;</span>
+<span class="fc" id="L21">		SmeCtrgyName responseCtrgyName =new SmeCtrgyName();</span>
+<span class="fc" id="L22">		responseCtrgyName.setCtrgyName(iSmeDao.ctrgyNameOnSme(empId));</span>
+<span class="fc" id="L23">		return responseCtrgyName;</span>
 	}
 	
 	public ResponseOnUpdate updatePost(UpdatePostQuery updatePostQuery) throws ParseException {
-<span class="nc" id="L27">		ResponseOnUpdate responseOnUpdate=new ResponseOnUpdate();</span>
-<span class="nc" id="L28">		responseOnUpdate.setResponseMsg(iSmeDao.updatePostStatus(updatePostQuery));</span>
-<span class="nc" id="L29">		return  responseOnUpdate;</span>
+<span class="fc" id="L27">		ResponseOnUpdate responseOnUpdate=new ResponseOnUpdate();</span>
+<span class="fc" id="L28">		responseOnUpdate.setResponseMsg(iSmeDao.updatePostStatus(updatePostQuery));</span>
+<span class="fc" id="L29">		return  responseOnUpdate;</span>
 	}
 	public ResponseOnUpdate updateReply(UpdateReplyQuery updateReplyQuery) throws ParseException {
-<span class="nc" id="L32">		ResponseOnUpdate responseOnUpdate=new ResponseOnUpdate();</span>
-<span class="nc" id="L33">		responseOnUpdate.setResponseMsg(iSmeDao.updateReplyStatus(updateReplyQuery));</span>
-<span class="nc" id="L34">		return  responseOnUpdate;</span>
+<span class="fc" id="L32">		ResponseOnUpdate responseOnUpdate=new ResponseOnUpdate();</span>
+<span class="fc" id="L33">		responseOnUpdate.setResponseMsg(iSmeDao.updateReplyStatus(updateReplyQuery));</span>
+<span class="fc" id="L34">		return  responseOnUpdate;</span>
 	}
 
 }

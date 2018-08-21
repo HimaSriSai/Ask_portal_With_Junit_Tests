@@ -10,23 +10,23 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @EnableAspectJAutoProxy
-<span class="nc" id="L13">public class AskAspectClass {</span>
+<span class="fc" id="L13">public class AskAspectClass {</span>
 
-<span class="nc" id="L15">	 private static final Logger LOGGER = Logger.getLogger(AskAspectClass.class);</span>
+<span class="fc" id="L15">	 private static final Logger LOGGER = Logger.getLogger(AskAspectClass.class);</span>
 
 	@Around(&quot;@annotation(com.prokarma.common.util.Ask_AOP)&quot;)
 	public Object employeeAround(ProceedingJoinPoint proceedingJoinPoint) {
 
-<span class="nc" id="L20">		LOGGER.info(&quot;Method Initiated&quot;);</span>
-<span class="nc" id="L21">		Object value = null;</span>
+<span class="fc" id="L20">		LOGGER.info(&quot;Method Initiated&quot;);</span>
+<span class="fc" id="L21">		Object value = null;</span>
 		try {
-<span class="nc" id="L23">			value = proceedingJoinPoint.proceed();</span>
+<span class="fc" id="L23">			value = proceedingJoinPoint.proceed();</span>
 <span class="nc" id="L24">		} catch (Throwable e) {</span>
 <span class="nc" id="L25">			LOGGER.info(e.getMessage());</span>
-<span class="nc" id="L26">		}</span>
+<span class="fc" id="L26">		}</span>
 
-<span class="nc" id="L28">		LOGGER.info(&quot;End of Method&quot;);</span>
-<span class="nc" id="L29">		return value;</span>
+<span class="fc" id="L28">		LOGGER.info(&quot;End of Method&quot;);</span>
+<span class="fc" id="L29">		return value;</span>
 
 	}
 

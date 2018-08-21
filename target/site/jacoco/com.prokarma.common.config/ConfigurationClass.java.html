@@ -43,7 +43,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 @ComponentScan(basePackages = &quot;com.prokarma&quot;)
 @EnableTransactionManagement
 @PropertySource(&quot;classpath:application.properties&quot;)
-<span class="nc" id="L46">public class ConfigurationClass implements Serializable {</span>
+<span class="fc" id="L46">public class ConfigurationClass implements Serializable {</span>
 
 	/**
 	 * 
@@ -60,12 +60,12 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public DataSource dataSource() {
-<span class="nc" id="L63">		final DriverManagerDataSource dataSource = new DriverManagerDataSource();</span>
-<span class="nc" id="L64">		dataSource.setDriverClassName(&quot;oracle.jdbc.driver.OracleDriver&quot;);</span>
-<span class="nc" id="L65">		dataSource.setUrl(env.getProperty(&quot;spring.datasource.url&quot;));</span>
-<span class="nc" id="L66">		dataSource.setUsername(env.getProperty(&quot;spring.datasource.username&quot;));</span>
-<span class="nc" id="L67">		dataSource.setPassword(env.getProperty(&quot;spring.datasource.password&quot;));</span>
-<span class="nc" id="L68">		return dataSource;</span>
+<span class="fc" id="L63">		final DriverManagerDataSource dataSource = new DriverManagerDataSource();</span>
+<span class="fc" id="L64">		dataSource.setDriverClassName(&quot;oracle.jdbc.driver.OracleDriver&quot;);</span>
+<span class="fc" id="L65">		dataSource.setUrl(env.getProperty(&quot;spring.datasource.url&quot;));</span>
+<span class="fc" id="L66">		dataSource.setUsername(env.getProperty(&quot;spring.datasource.username&quot;));</span>
+<span class="fc" id="L67">		dataSource.setPassword(env.getProperty(&quot;spring.datasource.password&quot;));</span>
+<span class="fc" id="L68">		return dataSource;</span>
 	}
 
 	/**
@@ -73,9 +73,9 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public PlatformTransactionManager transactionManager() {
-<span class="nc" id="L76">		DataSourceTransactionManager transactionalmanager = new DataSourceTransactionManager();</span>
-<span class="nc" id="L77">		transactionalmanager.setDataSource(dataSource());</span>
-<span class="nc" id="L78">		return transactionalmanager;</span>
+<span class="fc" id="L76">		DataSourceTransactionManager transactionalmanager = new DataSourceTransactionManager();</span>
+<span class="fc" id="L77">		transactionalmanager.setDataSource(dataSource());</span>
+<span class="fc" id="L78">		return transactionalmanager;</span>
 	}
 
 	/**
@@ -83,9 +83,9 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public JdbcTemplate jdbcTemplate() {
-<span class="nc" id="L86">		JdbcTemplate jdbcTemplate = new JdbcTemplate();</span>
-<span class="nc" id="L87">		jdbcTemplate.setDataSource(dataSource());</span>
-<span class="nc" id="L88">		return jdbcTemplate;</span>
+<span class="fc" id="L86">		JdbcTemplate jdbcTemplate = new JdbcTemplate();</span>
+<span class="fc" id="L87">		jdbcTemplate.setDataSource(dataSource());</span>
+<span class="fc" id="L88">		return jdbcTemplate;</span>
 	}
 
 	/**
@@ -93,7 +93,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public NamedParameterJdbcTemplate namedparameterjdbctemplate() {
-<span class="nc" id="L96">		return new NamedParameterJdbcTemplate(dataSource());</span>
+<span class="fc" id="L96">		return new NamedParameterJdbcTemplate(dataSource());</span>
 
 	}
 
@@ -102,17 +102,17 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public JavaMailSenderImpl javaMailSenderImpl() {
-<span class="nc" id="L105">		final JavaMailSenderImpl mailSender = new JavaMailSenderImpl();</span>
-<span class="nc" id="L106">		mailSender.setHost(&quot;smtp.office365.com&quot;);</span>
-<span class="nc" id="L107">		mailSender.setPort(587);</span>
-<span class="nc" id="L108">		mailSender.setUsername(env.getProperty(&quot;spring.mailsource.mail&quot;));</span>
-<span class="nc" id="L109">		mailSender.setPassword(env.getProperty(&quot;spring.mailsource.password&quot;));</span>
-<span class="nc" id="L110">		final Properties properties = mailSender.getJavaMailProperties();</span>
-<span class="nc" id="L111">		properties.put(&quot;mail.transport.protocol&quot;, &quot;smtp&quot;);</span>
-<span class="nc" id="L112">		properties.put(&quot;mail.smtp.auth&quot;, &quot;true&quot;);</span>
-<span class="nc" id="L113">		properties.put(&quot;mail.smtp.starttls.enable&quot;, &quot;true&quot;);</span>
-<span class="nc" id="L114">		properties.put(&quot;mail.debug&quot;, &quot;true&quot;);</span>
-<span class="nc" id="L115">		return mailSender;</span>
+<span class="fc" id="L105">		final JavaMailSenderImpl mailSender = new JavaMailSenderImpl();</span>
+<span class="fc" id="L106">		mailSender.setHost(&quot;smtp.office365.com&quot;);</span>
+<span class="fc" id="L107">		mailSender.setPort(587);</span>
+<span class="fc" id="L108">		mailSender.setUsername(env.getProperty(&quot;spring.mailsource.mail&quot;));</span>
+<span class="fc" id="L109">		mailSender.setPassword(env.getProperty(&quot;spring.mailsource.password&quot;));</span>
+<span class="fc" id="L110">		final Properties properties = mailSender.getJavaMailProperties();</span>
+<span class="fc" id="L111">		properties.put(&quot;mail.transport.protocol&quot;, &quot;smtp&quot;);</span>
+<span class="fc" id="L112">		properties.put(&quot;mail.smtp.auth&quot;, &quot;true&quot;);</span>
+<span class="fc" id="L113">		properties.put(&quot;mail.smtp.starttls.enable&quot;, &quot;true&quot;);</span>
+<span class="fc" id="L114">		properties.put(&quot;mail.debug&quot;, &quot;true&quot;);</span>
+<span class="fc" id="L115">		return mailSender;</span>
 	}
 
 	/**
@@ -121,7 +121,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	@Bean(name = &quot;userProfileDao&quot;)
 	public ForgotPasswordDaoImpl getForgotPasswordProfile() {
 
-<span class="nc" id="L124">		return new ForgotPasswordDaoImpl();</span>
+<span class="fc" id="L124">		return new ForgotPasswordDaoImpl();</span>
 	}
 
 	/**
@@ -130,7 +130,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	@Bean(name = &quot;mailService&quot;)
 	public MailServiceImpl getMailService() {
 
-<span class="nc" id="L133">		return new MailServiceImpl();</span>
+<span class="fc" id="L133">		return new MailServiceImpl();</span>
 	}
 
 	/**
@@ -139,7 +139,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	@Bean(name = &quot;forgotpasswordservice&quot;)
 	public ForgotPasswordServiceImpl forgotPasswordServiceImpl() {
 
-<span class="nc" id="L142">		return new ForgotPasswordServiceImpl();</span>
+<span class="fc" id="L142">		return new ForgotPasswordServiceImpl();</span>
 	}
 
 	/**
@@ -147,7 +147,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean(name = &quot;newUserService&quot;)
 	public NewUserServiceImpl newUserServiceImpl() {
-<span class="nc" id="L150">		return new NewUserServiceImpl();</span>
+<span class="fc" id="L150">		return new NewUserServiceImpl();</span>
 	}
 
 	/**
@@ -155,7 +155,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean(name = &quot;newUserProfile&quot;)
 	public NewuserprofileImpl newuserprofileImpl() {
-<span class="nc" id="L158">		return new NewuserprofileImpl();</span>
+<span class="fc" id="L158">		return new NewuserprofileImpl();</span>
 	}
 
 	/**
@@ -163,7 +163,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean(name = &quot;searchService&quot;)
 	public SearchServiceImpl searchServiceImpl() {
-<span class="nc" id="L166">		return new SearchServiceImpl();</span>
+<span class="fc" id="L166">		return new SearchServiceImpl();</span>
 	}
 
 	/**
@@ -171,7 +171,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean(name = &quot;searchDao&quot;)
 	public SearchDaoImpl searchDaoImpl() {
-<span class="nc" id="L174">		return new SearchDaoImpl();</span>
+<span class="fc" id="L174">		return new SearchDaoImpl();</span>
 	}
 
 	/**
@@ -179,7 +179,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public PostQueryDaoImpl postQueryDaoImpl() {
-<span class="nc" id="L182">		return new PostQueryDaoImpl();</span>
+<span class="fc" id="L182">		return new PostQueryDaoImpl();</span>
 	}
 
 	/**
@@ -187,7 +187,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public PostQueryServiceImpl postQueryServiceImpl() {
-<span class="nc" id="L190">		return new PostQueryServiceImpl();</span>
+<span class="fc" id="L190">		return new PostQueryServiceImpl();</span>
 	}
 
 	/**
@@ -195,7 +195,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public RetrieveUserProfileDaoImpl retrieveUserProfileDaoImpl() {
-<span class="nc" id="L198">		return new RetrieveUserProfileDaoImpl();</span>
+<span class="fc" id="L198">		return new RetrieveUserProfileDaoImpl();</span>
 	}
 
 	/**
@@ -203,7 +203,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public RetrieveUserProfileServiceImpl retrieveUserProfileServiceImpl() {
-<span class="nc" id="L206">		return new RetrieveUserProfileServiceImpl();</span>
+<span class="fc" id="L206">		return new RetrieveUserProfileServiceImpl();</span>
 	}
 
 	/**
@@ -211,7 +211,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public UpdateUserProfileDaoImpl updateUserProfileDaoImpl() {
-<span class="nc" id="L214">		return new UpdateUserProfileDaoImpl();</span>
+<span class="fc" id="L214">		return new UpdateUserProfileDaoImpl();</span>
 	}
 
 	/**
@@ -219,7 +219,7 @@ import com.prokarma.userprofile.service.UpdateUserProfileServiceImpl;
 	 */
 	@Bean
 	public UpdateUserProfileServiceImpl updateUserProfileServiceImpl() {
-<span class="nc" id="L222">		return new UpdateUserProfileServiceImpl();</span>
+<span class="fc" id="L222">		return new UpdateUserProfileServiceImpl();</span>
 	}
 
 }

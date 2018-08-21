@@ -26,7 +26,7 @@ import com.prokarma.viewpost.model.SearchInfoModel;
  *
  */
 @Component
-<span class="nc" id="L29">public class ViewAllPostService implements IViewService {</span>
+<span class="fc" id="L29">public class ViewAllPostService implements IViewService {</span>
 
 	/**
 	 * 
@@ -41,18 +41,18 @@ import com.prokarma.viewpost.model.SearchInfoModel;
 	 */
 	public Set&lt;PostReplyModelSet&gt; getAllPostsAndReplies(final SearchInfoModel searchModelInfo) {
 
-<span class="nc" id="L44">		final Set&lt;PostReplyModelSet&gt; pstRplyModSets = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L44">		final Set&lt;PostReplyModelSet&gt; pstRplyModSets = new HashSet&lt;&gt;();</span>
 
-<span class="nc" id="L46">		final List&lt;PostReplyTotal&gt; pstRplyTotList = viewDao.getPostdata(searchModelInfo);</span>
+<span class="fc" id="L46">		final List&lt;PostReplyTotal&gt; pstRplyTotList = viewDao.getPostdata(searchModelInfo);</span>
 
-<span class="nc" id="L48">		final Map&lt;PostQueryInfo, Set&lt;ReplyQueriesInfo&gt;&gt; mapPostReply = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L48">		final Map&lt;PostQueryInfo, Set&lt;ReplyQueriesInfo&gt;&gt; mapPostReply = new HashMap&lt;&gt;();</span>
 
-<span class="nc bnc" id="L50" title="All 2 branches missed.">		for (PostReplyTotal postQueryInfo : pstRplyTotList) {</span>
-<span class="nc" id="L51">			createPostReplyMap(mapPostReply, postQueryInfo);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		for (PostReplyTotal postQueryInfo : pstRplyTotList) {</span>
+<span class="fc" id="L51">			createPostReplyMap(mapPostReply, postQueryInfo);</span>
 
-<span class="nc" id="L53">		}</span>
-<span class="nc" id="L54">		createSetForPostReply(pstRplyModSets, mapPostReply);</span>
-<span class="nc" id="L55">		return pstRplyModSets;</span>
+<span class="fc" id="L53">		}</span>
+<span class="fc" id="L54">		createSetForPostReply(pstRplyModSets, mapPostReply);</span>
+<span class="fc" id="L55">		return pstRplyModSets;</span>
 	}
 
 	/**
@@ -62,14 +62,14 @@ import com.prokarma.viewpost.model.SearchInfoModel;
 	private void createSetForPostReply(final Set&lt;PostReplyModelSet&gt; pstRplyModSets,
 			final Map&lt;PostQueryInfo, Set&lt;ReplyQueriesInfo&gt;&gt; mapPostReply) {
 		PostReplyModelSet pstRplyModSet;
-<span class="nc bnc" id="L65" title="All 2 branches missed.">		for (Map.Entry&lt;PostQueryInfo, Set&lt;ReplyQueriesInfo&gt;&gt; entry : mapPostReply.entrySet()) {</span>
-<span class="nc" id="L66">			pstRplyModSet = new PostReplyModelSet();</span>
-<span class="nc" id="L67">			pstRplyModSet.setPostQueryObj(entry.getKey());</span>
-<span class="nc" id="L68">			pstRplyModSet.setRplyQueriesInfosSet(entry.getValue());</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">		for (Map.Entry&lt;PostQueryInfo, Set&lt;ReplyQueriesInfo&gt;&gt; entry : mapPostReply.entrySet()) {</span>
+<span class="fc" id="L66">			pstRplyModSet = new PostReplyModelSet();</span>
+<span class="fc" id="L67">			pstRplyModSet.setPostQueryObj(entry.getKey());</span>
+<span class="fc" id="L68">			pstRplyModSet.setRplyQueriesInfosSet(entry.getValue());</span>
 
-<span class="nc" id="L70">			pstRplyModSets.add(pstRplyModSet);</span>
-<span class="nc" id="L71">		}</span>
-<span class="nc" id="L72">	}</span>
+<span class="fc" id="L70">			pstRplyModSets.add(pstRplyModSet);</span>
+<span class="fc" id="L71">		}</span>
+<span class="fc" id="L72">	}</span>
 
 	/**
 	 * @param mapPostReply
@@ -80,60 +80,60 @@ import com.prokarma.viewpost.model.SearchInfoModel;
 		Set&lt;ReplyQueriesInfo&gt; replyQueriesInfos;
 		ReplyQueriesInfo queriesInfo;
 		PostQueryInfo postQueryInfoObj;
-<span class="nc" id="L83">		postQueryInfoObj = new PostQueryInfo();</span>
-<span class="nc" id="L84">		postQueryInfoObj.setPostId(postReplyTotal.getPostId());</span>
-<span class="nc" id="L85">		postQueryInfoObj.setPostedMsg(postReplyTotal.getPostedMsg());</span>
-<span class="nc" id="L86">		postQueryInfoObj.setPostedBy(postReplyTotal.getPostedBy());</span>
-<span class="nc" id="L87">		postQueryInfoObj.setCtgryName(postReplyTotal.getCtgryName());</span>
-<span class="nc" id="L88">		postQueryInfoObj.setPostedDate(postReplyTotal.getPostedDate());</span>
-<span class="nc" id="L89">		postQueryInfoObj.setFirstName(CommonUtil.toInitCap(postReplyTotal.getFirstName()));</span>
-<span class="nc" id="L90">		postQueryInfoObj.setLastName(postReplyTotal.getLastName());</span>
-<span class="nc" id="L91">		postQueryInfoObj.setCrtdByName(</span>
-<span class="nc" id="L92">				CommonUtil.formatEmployeeName(postReplyTotal.getFirstName(), postReplyTotal.getLastName()));</span>
-<span class="nc bnc" id="L93" title="All 2 branches missed.">		if (mapPostReply.isEmpty()) {</span>
-<span class="nc" id="L94">			replyQueriesInfos = new HashSet&lt;&gt;();</span>
-<span class="nc bnc" id="L95" title="All 2 branches missed.">			if (&quot;Y&quot;.equalsIgnoreCase(postReplyTotal.getReplyStatus())) {</span>
+<span class="fc" id="L83">		postQueryInfoObj = new PostQueryInfo();</span>
+<span class="fc" id="L84">		postQueryInfoObj.setPostId(postReplyTotal.getPostId());</span>
+<span class="fc" id="L85">		postQueryInfoObj.setPostedMsg(postReplyTotal.getPostedMsg());</span>
+<span class="fc" id="L86">		postQueryInfoObj.setPostedBy(postReplyTotal.getPostedBy());</span>
+<span class="fc" id="L87">		postQueryInfoObj.setCtgryName(postReplyTotal.getCtgryName());</span>
+<span class="fc" id="L88">		postQueryInfoObj.setPostedDate(postReplyTotal.getPostedDate());</span>
+<span class="fc" id="L89">		postQueryInfoObj.setFirstName(CommonUtil.toInitCap(postReplyTotal.getFirstName()));</span>
+<span class="fc" id="L90">		postQueryInfoObj.setLastName(postReplyTotal.getLastName());</span>
+<span class="fc" id="L91">		postQueryInfoObj.setCrtdByName(</span>
+<span class="fc" id="L92">				CommonUtil.formatEmployeeName(postReplyTotal.getFirstName(), postReplyTotal.getLastName()));</span>
+<span class="fc bfc" id="L93" title="All 2 branches covered.">		if (mapPostReply.isEmpty()) {</span>
+<span class="fc" id="L94">			replyQueriesInfos = new HashSet&lt;&gt;();</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">			if (&quot;Y&quot;.equalsIgnoreCase(postReplyTotal.getReplyStatus())) {</span>
 <span class="nc" id="L96">				queriesInfo = new ReplyQueriesInfo();</span>
 <span class="nc" id="L97">				setReplyObject(queriesInfo, postReplyTotal);</span>
 <span class="nc" id="L98">				replyQueriesInfos.add(queriesInfo);</span>
 
 			}
-<span class="nc" id="L101">			mapPostReply.put(postQueryInfoObj, replyQueriesInfos);</span>
+<span class="fc" id="L101">			mapPostReply.put(postQueryInfoObj, replyQueriesInfos);</span>
 		} else {
-<span class="nc bnc" id="L103" title="All 2 branches missed.">			if (mapPostReply.containsKey(postQueryInfoObj)) {</span>
-<span class="nc bnc" id="L104" title="All 2 branches missed.">				if (&quot;Y&quot;.equalsIgnoreCase(postReplyTotal.getReplyStatus())) {</span>
-<span class="nc" id="L105">					queriesInfo = new ReplyQueriesInfo();</span>
-<span class="nc" id="L106">					setReplyObject(queriesInfo, postReplyTotal);</span>
-<span class="nc" id="L107">					mapPostReply.get(postQueryInfoObj).add(queriesInfo);</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">			if (mapPostReply.containsKey(postQueryInfoObj)) {</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">				if (&quot;Y&quot;.equalsIgnoreCase(postReplyTotal.getReplyStatus())) {</span>
+<span class="fc" id="L105">					queriesInfo = new ReplyQueriesInfo();</span>
+<span class="fc" id="L106">					setReplyObject(queriesInfo, postReplyTotal);</span>
+<span class="fc" id="L107">					mapPostReply.get(postQueryInfoObj).add(queriesInfo);</span>
 				}
 			} else {
-<span class="nc" id="L110">				replyQueriesInfos = new HashSet&lt;&gt;();</span>
-<span class="nc bnc" id="L111" title="All 2 branches missed.">				if (&quot;Y&quot;.equalsIgnoreCase(postReplyTotal.getReplyStatus())) {</span>
-<span class="nc" id="L112">					queriesInfo = new ReplyQueriesInfo();</span>
-<span class="nc" id="L113">					setReplyObject(queriesInfo, postReplyTotal);</span>
-<span class="nc" id="L114">					replyQueriesInfos.add(queriesInfo);</span>
+<span class="fc" id="L110">				replyQueriesInfos = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">				if (&quot;Y&quot;.equalsIgnoreCase(postReplyTotal.getReplyStatus())) {</span>
+<span class="fc" id="L112">					queriesInfo = new ReplyQueriesInfo();</span>
+<span class="fc" id="L113">					setReplyObject(queriesInfo, postReplyTotal);</span>
+<span class="fc" id="L114">					replyQueriesInfos.add(queriesInfo);</span>
 				}
-<span class="nc" id="L116">				mapPostReply.put(postQueryInfoObj, replyQueriesInfos);</span>
+<span class="fc" id="L116">				mapPostReply.put(postQueryInfoObj, replyQueriesInfos);</span>
 			}
 		}
-<span class="nc" id="L119">	}</span>
+<span class="fc" id="L119">	}</span>
 
 	/**
 	 * @param queriesInfo
 	 * @param postQueryInfo
 	 */
 	private void setReplyObject(final ReplyQueriesInfo queriesInfo, final PostReplyTotal postReplyTotal) {
-<span class="nc" id="L126">		queriesInfo.setRepliesMsgs(postReplyTotal.getRepliesMsgs());</span>
-<span class="nc" id="L127">		queriesInfo.setReplyedDate(postReplyTotal.getReplyedDate());</span>
-<span class="nc" id="L128">		queriesInfo.setReplyStatus(postReplyTotal.getReplyStatus());</span>
-<span class="nc" id="L129">		queriesInfo.setReplyId(postReplyTotal.getReplyId());</span>
-<span class="nc" id="L130">		queriesInfo.setRepliedBy(postReplyTotal.getRepliedBy());</span>
-<span class="nc" id="L131">		queriesInfo.setRplPostId(postReplyTotal.getReplyPostId());</span>
-<span class="nc" id="L132">		queriesInfo.setRplyFirstName(postReplyTotal.getRplyFirstName());</span>
-<span class="nc" id="L133">		queriesInfo.setRplyLastName(postReplyTotal.getRplyLastName());</span>
-<span class="nc" id="L134">		queriesInfo.setRpldByName(</span>
-<span class="nc" id="L135">				CommonUtil.formatEmployeeName(postReplyTotal.getRplyFirstName(), postReplyTotal.getRplyLastName()));</span>
-<span class="nc" id="L136">	}</span>
+<span class="fc" id="L126">		queriesInfo.setRepliesMsgs(postReplyTotal.getRepliesMsgs());</span>
+<span class="fc" id="L127">		queriesInfo.setReplyedDate(postReplyTotal.getReplyedDate());</span>
+<span class="fc" id="L128">		queriesInfo.setReplyStatus(postReplyTotal.getReplyStatus());</span>
+<span class="fc" id="L129">		queriesInfo.setReplyId(postReplyTotal.getReplyId());</span>
+<span class="fc" id="L130">		queriesInfo.setRepliedBy(postReplyTotal.getRepliedBy());</span>
+<span class="fc" id="L131">		queriesInfo.setRplPostId(postReplyTotal.getReplyPostId());</span>
+<span class="fc" id="L132">		queriesInfo.setRplyFirstName(postReplyTotal.getRplyFirstName());</span>
+<span class="fc" id="L133">		queriesInfo.setRplyLastName(postReplyTotal.getRplyLastName());</span>
+<span class="fc" id="L134">		queriesInfo.setRpldByName(</span>
+<span class="fc" id="L135">				CommonUtil.formatEmployeeName(postReplyTotal.getRplyFirstName(), postReplyTotal.getRplyLastName()));</span>
+<span class="fc" id="L136">	}</span>
 
 	/*
 	 * (non-Javadoc)
@@ -141,9 +141,9 @@ import com.prokarma.viewpost.model.SearchInfoModel;
 	 * @see com.prokarma.viewpost.service.IViewService#replyToPost
 	 */
 	public ResponseModelOnRply replyToPost(final ReplyOnPost replyOnPost) throws ParseException {
-<span class="nc" id="L144">		final ResponseModelOnRply responseModelOnRply = new ResponseModelOnRply();</span>
-<span class="nc" id="L145">		responseModelOnRply.setReplyStatus(viewDao.insertReply(replyOnPost));</span>
-<span class="nc" id="L146">		return responseModelOnRply;</span>
+<span class="fc" id="L144">		final ResponseModelOnRply responseModelOnRply = new ResponseModelOnRply();</span>
+<span class="fc" id="L145">		responseModelOnRply.setReplyStatus(viewDao.insertReply(replyOnPost));</span>
+<span class="fc" id="L146">		return responseModelOnRply;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

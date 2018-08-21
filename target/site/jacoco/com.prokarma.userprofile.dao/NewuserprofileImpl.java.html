@@ -20,7 +20,7 @@ import com.prokarma.userprofile.model.UserProfileBean;
  * @author prokarma
  *
  */
-<span class="nc" id="L23">public class NewuserprofileImpl implements INewUserProfileDao, Serializable {</span>
+<span class="fc" id="L23">public class NewuserprofileImpl implements INewUserProfileDao, Serializable {</span>
 	/**
 	 * 
 	 */
@@ -28,7 +28,7 @@ import com.prokarma.userprofile.model.UserProfileBean;
 	/**
 	 * 
 	 */
-<span class="nc" id="L31">	public static final Logger LOGGER = Logger.getLogger(NewuserprofileImpl.class);</span>
+<span class="fc" id="L31">	public static final Logger LOGGER = Logger.getLogger(NewuserprofileImpl.class);</span>
 	/**
 	 * 
 	 */
@@ -61,11 +61,11 @@ import com.prokarma.userprofile.model.UserProfileBean;
 	@Override
 	public String addUser(final UserProfileBean userProfile){
 
-<span class="nc" id="L64">		final String checkUsersql = &quot;select *  from  ask.ask_user_tbl where emp_id=:emplid&quot;;</span>
-<span class="nc" id="L65">		final MapSqlParameterSource mapEmpId = new MapSqlParameterSource();</span>
-<span class="nc" id="L66">		mapEmpId.addValue(&quot;emplid&quot;, userProfile.getEmpid());</span>
+<span class="fc" id="L64">		final String checkUsersql = &quot;select *  from  ask.ask_user_tbl where emp_id=:emplid&quot;;</span>
+<span class="fc" id="L65">		final MapSqlParameterSource mapEmpId = new MapSqlParameterSource();</span>
+<span class="fc" id="L66">		mapEmpId.addValue(&quot;emplid&quot;, userProfile.getEmpid());</span>
 
-<span class="nc" id="L68">		jdbctemplate.query(checkUsersql, mapEmpId, new ResultSetExtractor&lt;UserProfileBean&gt;() {</span>
+<span class="fc" id="L68">		jdbctemplate.query(checkUsersql, mapEmpId, new ResultSetExtractor&lt;UserProfileBean&gt;() {</span>
 			/*
 			 * (non-Javadoc)
 			 * 
@@ -74,12 +74,12 @@ import com.prokarma.userprofile.model.UserProfileBean;
 			 */
 			public UserProfileBean extractData(ResultSet idResultset) throws DataAccessException, SQLException {
 
-<span class="nc bnc" id="L77" title="All 2 branches missed.">				if (!idResultset.next()) {</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">				if (!idResultset.next()) {</span>
 
-<span class="nc" id="L79">					final String checkUserNamesql = &quot;select *  from  ask.ask_user_tbl where u_name =:userName&quot;;</span>
-<span class="nc" id="L80">					final MapSqlParameterSource mapUserName = new MapSqlParameterSource();</span>
-<span class="nc" id="L81">					mapUserName.addValue(&quot;userName&quot;, userProfile.getuName());</span>
-<span class="nc" id="L82">					jdbctemplate.query(checkUserNamesql, mapUserName, new ResultSetExtractor&lt;UserProfileBean&gt;() {</span>
+<span class="fc" id="L79">					final String checkUserNamesql = &quot;select *  from  ask.ask_user_tbl where u_name =:userName&quot;;</span>
+<span class="fc" id="L80">					final MapSqlParameterSource mapUserName = new MapSqlParameterSource();</span>
+<span class="fc" id="L81">					mapUserName.addValue(&quot;userName&quot;, userProfile.getuName());</span>
+<span class="fc" id="L82">					jdbctemplate.query(checkUserNamesql, mapUserName, new ResultSetExtractor&lt;UserProfileBean&gt;() {</span>
 						/*
 						 * (non-Javadoc)
 						 * 
@@ -89,55 +89,55 @@ import com.prokarma.userprofile.model.UserProfileBean;
 						public UserProfileBean extractData(ResultSet uNameResultset)
 								throws DataAccessException, SQLException {
 
-<span class="nc bnc" id="L92" title="All 2 branches missed.">							if (!uNameResultset.next()) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">							if (!uNameResultset.next()) {</span>
 
-<span class="nc" id="L94">								final String sql = &quot;INSERT INTO ask.ask_user_tbl (emp_id, fst_name, last_name,email_id,phn_no,u_name,user_key) VALUES &quot;</span>
+<span class="fc" id="L94">								final String sql = &quot;INSERT INTO ask.ask_user_tbl (emp_id, fst_name, last_name,email_id,phn_no,u_name,user_key) VALUES &quot;</span>
 										+ &quot;(:empid,:firstname,:lastname,:email,:phn,:uname,:upwd)&quot;;
-<span class="nc" id="L96">								final MapSqlParameterSource mapperParams = new MapSqlParameterSource();</span>
-<span class="nc" id="L97">								mapperParams.addValue(&quot;empid&quot;, userProfile.getEmpid());</span>
-<span class="nc" id="L98">								mapperParams.addValue(&quot;firstname&quot;, userProfile.getFstname());</span>
-<span class="nc" id="L99">								mapperParams.addValue(&quot;lastname&quot;, userProfile.getLastname());</span>
-<span class="nc" id="L100">								mapperParams.addValue(&quot;email&quot;, userProfile.getEmailid());</span>
-<span class="nc" id="L101">								mapperParams.addValue(&quot;uname&quot;, userProfile.getuName());</span>
-<span class="nc" id="L102">								mapperParams.addValue(&quot;upwd&quot;, userProfile.getuPwd());</span>
-<span class="nc" id="L103">								mapperParams.addValue(&quot;phn&quot;, userProfile.getPhnNo());</span>
-<span class="nc" id="L104">								int result = 0;</span>
+<span class="fc" id="L96">								final MapSqlParameterSource mapperParams = new MapSqlParameterSource();</span>
+<span class="fc" id="L97">								mapperParams.addValue(&quot;empid&quot;, userProfile.getEmpid());</span>
+<span class="fc" id="L98">								mapperParams.addValue(&quot;firstname&quot;, userProfile.getFstname());</span>
+<span class="fc" id="L99">								mapperParams.addValue(&quot;lastname&quot;, userProfile.getLastname());</span>
+<span class="fc" id="L100">								mapperParams.addValue(&quot;email&quot;, userProfile.getEmailid());</span>
+<span class="fc" id="L101">								mapperParams.addValue(&quot;uname&quot;, userProfile.getuName());</span>
+<span class="fc" id="L102">								mapperParams.addValue(&quot;upwd&quot;, userProfile.getuPwd());</span>
+<span class="fc" id="L103">								mapperParams.addValue(&quot;phn&quot;, userProfile.getPhnNo());</span>
+<span class="fc" id="L104">								int result = 0;</span>
 								try {
-<span class="nc" id="L106">									result = jdbctemplate.update(sql, mapperParams);</span>
-<span class="nc" id="L107">								} catch (DuplicateKeyException e) {</span>
-<span class="nc" id="L108">									responseMsg = &quot;This email already registered! Please try another email&quot;;</span>
-<span class="nc" id="L109">								}</span>
-<span class="nc bnc" id="L110" title="All 2 branches missed.">								if (result == 1) {</span>
-<span class="nc" id="L111">									LOGGER.info(&quot;User Credentials Successfully Added&quot;);</span>
-<span class="nc" id="L112">									responseMsg = &quot;Registered Successfully! Please Login&quot;;</span>
+<span class="fc" id="L106">									result = jdbctemplate.update(sql, mapperParams);</span>
+<span class="fc" id="L107">								} catch (DuplicateKeyException e) {</span>
+<span class="fc" id="L108">									responseMsg = &quot;This email already registered! Please try another email&quot;;</span>
+<span class="fc" id="L109">								}</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">								if (result == 1) {</span>
+<span class="fc" id="L111">									LOGGER.info(&quot;User Credentials Successfully Added&quot;);</span>
+<span class="fc" id="L112">									responseMsg = &quot;Registered Successfully! Please Login&quot;;</span>
 								}
 
-<span class="nc" id="L115">							} else {</span>
+<span class="fc" id="L115">							} else {</span>
 
-<span class="nc" id="L117">								responseMsg = &quot;UserName Already Exist! Please Try With Another&quot;;</span>
-<span class="nc" id="L118">								LOGGER.info(responseMsg);</span>
+<span class="fc" id="L117">								responseMsg = &quot;UserName Already Exist! Please Try With Another&quot;;</span>
+<span class="fc" id="L118">								LOGGER.info(responseMsg);</span>
 
 							}
 
-<span class="nc" id="L122">							return null;</span>
+<span class="fc" id="L122">							return null;</span>
 						}
 					});
 
-<span class="nc" id="L126">				} else {</span>
-<span class="nc" id="L127">					responseMsg = &quot;EmployeeID Already Registered! Please Login&quot;;</span>
-<span class="nc" id="L128">					LOGGER.info(responseMsg);</span>
+<span class="fc" id="L126">				} else {</span>
+<span class="fc" id="L127">					responseMsg = &quot;EmployeeID Already Registered! Please Login&quot;;</span>
+<span class="fc" id="L128">					LOGGER.info(responseMsg);</span>
 				}
 
-<span class="nc" id="L131">				return null;</span>
+<span class="fc" id="L131">				return null;</span>
 			}
 		});
 
-<span class="nc" id="L135">		return responseMsg;</span>
+<span class="fc" id="L135">		return responseMsg;</span>
 	}
 
 	public int giveEmpId(String firstName, String lastName) throws EmptyResultDataAccessException {
-<span class="nc" id="L139">		String sql = &quot;select emp_id from ask.ask_user_tbl where fst_name=? and last_name=?&quot;;</span>
-<span class="nc" id="L140">		return jdbcTemplateObj.queryForObject(sql, Integer.class, new Object[] { firstName, lastName });</span>
+<span class="fc" id="L139">		String sql = &quot;select emp_id from ask.ask_user_tbl where fst_name=? and last_name=?&quot;;</span>
+<span class="fc" id="L140">		return jdbcTemplateObj.queryForObject(sql, Integer.class, new Object[] { firstName, lastName });</span>
 	}
 
 }

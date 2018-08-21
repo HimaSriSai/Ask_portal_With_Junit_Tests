@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-<span class="nc" id="L18">public class AdminDAOImpl implements IAdminDAO {</span>
+<span class="fc" id="L18">public class AdminDAOImpl implements IAdminDAO {</span>
 
 	/**
 	 * 
@@ -113,17 +113,17 @@ import org.springframework.stereotype.Component;
 	 * @return list of full Names from user table
 	 */
 	public List&lt;String&gt; getNamesFormUserTbl() {
-<span class="nc" id="L116">		List&lt;String&gt; fullNames = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L117">		String sqlQuery = &quot;select fst_name||' '||last_name from ask.ask_user_tbl&quot;;</span>
-<span class="nc" id="L118">		fullNames = jdbcTemplate.queryForList(sqlQuery, String.class);</span>
-<span class="nc" id="L119">		return fullNames;</span>
+<span class="fc" id="L116">		List&lt;String&gt; fullNames = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L117">		String sqlQuery = &quot;select fst_name||' '||last_name from ask.ask_user_tbl&quot;;</span>
+<span class="fc" id="L118">		fullNames = jdbcTemplate.queryForList(sqlQuery, String.class);</span>
+<span class="fc" id="L119">		return fullNames;</span>
 	}
 
 	/**
 	 * @return empId
 	 */
 	public int getEmpIdUsingName(String firstName, String lastName) throws Exception {
-<span class="nc" id="L126">		String sql = &quot;select emp_id from ask.ask_user_tbl where fst_name=? and last_name=?&quot;;</span>
+<span class="fc" id="L126">		String sql = &quot;select emp_id from ask.ask_user_tbl where fst_name=? and last_name=?&quot;;</span>
 <span class="nc" id="L127">		return jdbcTemplate.queryForObject(sql, Integer.class, new Object[] { firstName, lastName });</span>
 	}
 

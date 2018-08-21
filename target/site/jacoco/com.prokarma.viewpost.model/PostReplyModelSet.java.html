@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PostReplyModelSet.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ask_Portal Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.viewpost.model</a> &gt; <span class="el_source">PostReplyModelSet.java</span></div><h1>PostReplyModelSet.java</h1><pre class="source lang-java linenums">package com.prokarma.viewpost.model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * @author prokarma
+ *
+ */
+<span class="nc" id="L10">public class PostReplyModelSet {</span>
+	/**
+	 * 
+	 */
+	private PostQueryInfo postQueryObj;
+
+	/**
+	 * 
+	 */
+<span class="nc" id="L19">	private Set&lt;ReplyQueriesInfo&gt; rplyQueriesInfosSet = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * @return
+	 */
+	public PostQueryInfo getPostQueryObj() {
+<span class="nc" id="L25">		return postQueryObj;</span>
+	}
+
+	/**
+	 * @param postQueryObj
+	 */
+	public void setPostQueryObj(final PostQueryInfo postQueryObj) {
+<span class="nc" id="L32">		this.postQueryObj = postQueryObj;</span>
+<span class="nc" id="L33">	}</span>
+
+	/**
+	 * @return
+	 */
+	public Set&lt;ReplyQueriesInfo&gt; getRplyQueriesInfosSet() {
+<span class="nc" id="L39">		return rplyQueriesInfosSet;</span>
+	}
+
+	/**
+	 * @param rplyQueriesInfosSet
+	 */
+	public void setRplyQueriesInfosSet(final Set&lt;ReplyQueriesInfo&gt; rplyQueriesInfosSet) {
+<span class="nc" id="L46">		this.rplyQueriesInfosSet = rplyQueriesInfosSet;</span>
+<span class="nc" id="L47">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+<span class="nc" id="L56">		final int prime = 31;</span>
+<span class="nc" id="L57">		int result = 1;</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">		result = prime * result + ((postQueryObj == null) ? 0 : postQueryObj.hashCode());</span>
+<span class="nc" id="L59">		return result;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L69" title="All 2 branches missed.">		if (this == obj)</span>
+<span class="nc" id="L70">			return true;</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">		if (obj == null)</span>
+<span class="nc" id="L72">			return false;</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="nc" id="L74">			return false;</span>
+<span class="nc" id="L75">		PostReplyModelSet other = (PostReplyModelSet) obj;</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">		if (postQueryObj == null) {</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">			if (other.postQueryObj != null)</span>
+<span class="nc" id="L78">				return false;</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">		} else if (!postQueryObj.equals(other.postQueryObj))</span>
+<span class="nc" id="L80">			return false;</span>
+<span class="nc" id="L81">		return true;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

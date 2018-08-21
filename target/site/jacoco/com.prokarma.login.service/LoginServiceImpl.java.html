@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ask_Portal Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.login.service</a> &gt; <span class="el_source">LoginServiceImpl.java</span></div><h1>LoginServiceImpl.java</h1><pre class="source lang-java linenums">package com.prokarma.login.service;
+
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import com.prokarma.login.model.InfoFromDB;
+import com.prokarma.login.model.ResponseModel;
+import com.prokarma.common.util.CommonUtil;
+import com.prokarma.login.dao.ILoginDao;
+
+import com.prokarma.login.model.UserModel;
+import com.prokarma.menudashboard.service.IMenuService;
+
+/**
+ * @author Prokarma service interface implementation class
+ */
+@Component
+<span class="nc" id="L21">public class LoginServiceImpl implements ILoginService {</span>
+	/**
+	 * to use DAO layer
+	 */
+	@Autowired
+	private ILoginDao iLoginDao;
+	/**
+	 * 
+	 */
+	@Autowired
+	private IMenuService iMenuSer;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prokarma.login.service.ILoginService this method get password from
+	 * DAO it returns value
+	 */
+
+	public final ResponseModel validLogin(UserModel userModel) {
+		String message;
+		Set&lt;String&gt; roleName;
+<span class="nc" id="L43">		final ResponseModel resModel = new ResponseModel();</span>
+<span class="nc" id="L44">		final String pwd = iLoginDao.getpaswordDetails(userModel.getUserName());</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">		if (StringUtils.isEmpty(pwd)) {</span>
+<span class="nc" id="L46">			message = &quot;Invalid UserName&quot;;</span>
+<span class="nc" id="L47">			resModel.setResponseStr(message);</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		} else if (!pwd.equalsIgnoreCase(userModel.getPassword())) {</span>
+<span class="nc" id="L49">			message = &quot;Invalid Password&quot;;</span>
+<span class="nc" id="L50">			resModel.setResponseStr(message);</span>
+		} else {
+<span class="nc" id="L52">			message = &quot;Success&quot;;</span>
+<span class="nc" id="L53">			resModel.setResponseStr(message);</span>
+<span class="nc" id="L54">			InfoFromDB infoFromDB = iLoginDao.getEmpDetails(userModel.getUserName());</span>
+<span class="nc" id="L55">			resModel.setEmpId(infoFromDB.getEmpId());</span>
+<span class="nc" id="L56">			resModel.setUserFullName(</span>
+<span class="nc" id="L57">					CommonUtil.formatEmployeeName(infoFromDB.getFirstName(), infoFromDB.getLastName()));</span>
+<span class="nc" id="L58">			roleName = iMenuSer.roleName(userModel.getUserName());</span>
+<span class="nc" id="L59">			resModel.setRoleName(roleName);</span>
+		}
+<span class="nc" id="L61">		return resModel;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

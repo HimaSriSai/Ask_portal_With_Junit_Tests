@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LoginDaoImple.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ask_Portal Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.login.dao</a> &gt; <span class="el_source">LoginDaoImple.java</span></div><h1>LoginDaoImple.java</h1><pre class="source lang-java linenums">package com.prokarma.login.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+import com.prokarma.login.model.InfoFromDB;
+
+/**
+ * @author Prokarma DAO implementation class
+ */
+@Component
+@Repository
+<span class="nc" id="L19">public class LoginDaoImple implements ILoginDao {</span>
+	/**
+	 * to connect database
+	 */
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prokarma.login.dao.ILoginDao#getpaswordDetails
+	 * (com.prokarma.Entity.UserProfile) this method actually hits database and get
+	 * password
+	 */
+	public String getpaswordDetails(String userName) {
+<span class="nc" id="L34">		String query = &quot;select user_key from ASK.ask_user_tbl where u_name=?&quot;;</span>
+		try {
+
+<span class="nc" id="L37">			return jdbcTemplate.queryForObject(query, String.class, userName);</span>
+
+<span class="nc" id="L39">		} catch (Exception e) {</span>
+<span class="nc" id="L40">			return &quot;&quot;;</span>
+		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prokarma.login.dao.ILoginDao#getEmpId(java.lang.String) this method
+	 * actually hits database and get employee id
+	 */
+	public InfoFromDB getEmpDetails(String userName) {
+<span class="nc" id="L51">		String querySql = &quot;select emp_id,fst_name,last_name from ask.ask_user_tbl where u_name='&quot;+userName+&quot;'&quot;;</span>
+<span class="nc" id="L52">		return jdbcTemplate.queryForObject(querySql, new RowMapper&lt;InfoFromDB&gt;() {</span>
+			public InfoFromDB mapRow(final ResultSet resultSet, final int rowNum) throws SQLException {
+<span class="nc" id="L54">				InfoFromDB infoFromDB = new InfoFromDB();</span>
+<span class="nc" id="L55">				infoFromDB.setEmpId(resultSet.getInt(&quot;emp_id&quot;));</span>
+<span class="nc" id="L56">				infoFromDB.setFirstName(resultSet.getString(&quot;fst_name&quot;));</span>
+<span class="nc" id="L57">				infoFromDB.setLastName(resultSet.getString(&quot;last_name&quot;));</span>
+<span class="nc" id="L58">				return infoFromDB;</span>
+			}
+		});
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

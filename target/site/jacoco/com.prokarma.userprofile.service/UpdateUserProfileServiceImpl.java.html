@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UpdateUserProfileServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ask_Portal Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.userprofile.service</a> &gt; <span class="el_source">UpdateUserProfileServiceImpl.java</span></div><h1>UpdateUserProfileServiceImpl.java</h1><pre class="source lang-java linenums">package com.prokarma.userprofile.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import com.prokarma.userprofile.dao.INewUserProfileDao;
+import com.prokarma.userprofile.dao.UpdateUserProfileDao;
+import com.prokarma.userprofile.model.ResponseBean;
+import com.prokarma.userprofile.model.UserProfileBean;
+
+/**
+ * @author Prokarma
+ *
+ */
+<span class="nc" id="L15">public class UpdateUserProfileServiceImpl implements UpdateUserProfileService {</span>
+
+	/**
+	 * 
+	 */
+	@Autowired
+	private transient UpdateUserProfileDao updateData;
+	/**
+	 * 
+	 */
+	@Autowired
+	@Qualifier(&quot;newUserProfile&quot;)
+	private transient INewUserProfileDao newUserProfileDao;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prokarma.user_profile.service.UpdateUserProfileService#updateUser(com.
+	 * prokarma.user_profile.model.UserProfileBean)
+	 */
+	@Override
+	public ResponseBean updateUser(final UserProfileBean userModel) {
+<span class="nc" id="L38">		ResponseBean responseBean = new ResponseBean();</span>
+<span class="nc" id="L39">		int empId = 0;</span>
+		try {
+<span class="nc" id="L41">			empId = newUserProfileDao.giveEmpId(userModel.getFstname(), userModel.getLastname());</span>
+<span class="nc" id="L42">		} catch (Exception e) {</span>
+<span class="nc" id="L43">			empId = 0;</span>
+<span class="nc" id="L44">		}</span>
+<span class="nc bnc" id="L45" title="All 4 branches missed.">		if (empId == 0||(empId==userModel.getEmpid())) {</span>
+<span class="nc" id="L46">			responseBean.setResponseMessage(updateData.updateProfile(userModel));</span>
+		} else {
+<span class="nc" id="L48">			responseBean.setResponseMessage(&quot;The combination of first name as '&quot; + userModel.getFstname()</span>
+<span class="nc" id="L49">					+ &quot;' and last name as '&quot; + userModel.getLastname() + &quot;' already exist&quot;);</span>
+		}
+
+<span class="nc" id="L52">		return responseBean;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

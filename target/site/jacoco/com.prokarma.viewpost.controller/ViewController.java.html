@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ViewController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ask_Portal Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.viewpost.controller</a> &gt; <span class="el_source">ViewController.java</span></div><h1>ViewController.java</h1><pre class="source lang-java linenums">package com.prokarma.viewpost.controller;
+
+import java.text.ParseException;
+
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.prokarma.viewpost.model.PostReplyModelSet;
+import com.prokarma.viewpost.model.ReplyOnPost;
+import com.prokarma.viewpost.model.ResponseModelOnRply;
+import com.prokarma.viewpost.model.SearchInfoModel;
+import com.prokarma.viewpost.service.IViewService;
+
+/**
+ * @author prokarma
+ *
+ */
+@RestController
+@RequestMapping(&quot;/ask&quot;)
+<span class="nc" id="L29">public class ViewController {</span>
+	/**
+	 * to use service layer
+	 */
+
+	@Autowired
+	private IViewService service;
+
+	/**
+	 * @param searchModelInfo
+	 * @return
+	 */
+	@RequestMapping(value = &quot;/getAll&quot;, method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity&lt;Set&lt;PostReplyModelSet&gt;&gt; getAll(@RequestBody final SearchInfoModel searchModelInfo) {
+<span class="nc" id="L43">		final Set&lt;PostReplyModelSet&gt; responseModel = service.getAllPostsAndReplies(searchModelInfo);</span>
+<span class="nc" id="L44">		return  new ResponseEntity&lt;&gt;(responseModel,HttpStatus.OK);</span>
+	}
+
+	/**
+	 * @param replyOnPost
+	 * @return
+	 * @throws ParseException
+	 */
+	@RequestMapping(value = &quot;/replyOnPost&quot;, method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseModelOnRply replyOnPost(@RequestBody final ReplyOnPost replyOnPost) throws ParseException {
+<span class="nc" id="L54">		return service.replyToPost(replyOnPost);</span>
+
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

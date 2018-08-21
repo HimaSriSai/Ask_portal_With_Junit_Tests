@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ResponseModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ask_Portal Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.login.model</a> &gt; <span class="el_source">ResponseModel.java</span></div><h1>ResponseModel.java</h1><pre class="source lang-java linenums">package com.prokarma.login.model;
+
+import java.util.Set;
+
+/**
+ * @author Prokarma
+ *
+ */
+<span class="nc" id="L9">public class ResponseModel {</span>
+	/**
+	 * 
+	 */
+	String responseStr;
+	/**
+	 * 
+	 */
+	int empId;
+
+	/**
+	 * 
+	 */
+	Set&lt;String&gt; roleName;
+
+	/**
+	 * 
+	 */
+	private String userFullName;
+
+	/**
+	 * @return the userFullName
+	 */
+	public String getUserFullName() {
+<span class="nc" id="L33">		return userFullName;</span>
+	}
+
+	/**
+	 * @param userFullName
+	 *            the userFullName to set
+	 */
+	public void setUserFullName(String userFullName) {
+<span class="nc" id="L41">		this.userFullName = userFullName;</span>
+<span class="nc" id="L42">	}</span>
+
+	/**
+	 * @return the responseStr
+	 */
+	public String getResponseStr() {
+<span class="nc" id="L48">		return responseStr;</span>
+	}
+
+	/**
+	 * @param responseStr
+	 *            the responseStr to set
+	 */
+	public void setResponseStr(String responseStr) {
+<span class="nc" id="L56">		this.responseStr = responseStr;</span>
+<span class="nc" id="L57">	}</span>
+
+	/**
+	 * @return the roleName
+	 */
+	public Set&lt;String&gt; getRoleName() {
+<span class="nc" id="L63">		return roleName;</span>
+	}
+
+	/**
+	 * @param roleName
+	 *            the roleName to set
+	 */
+	public void setRoleName(Set&lt;String&gt; roleName) {
+<span class="nc" id="L71">		this.roleName = roleName;</span>
+<span class="nc" id="L72">	}</span>
+
+	/**
+	 * @return the empId
+	 */
+	public int getEmpId() {
+<span class="nc" id="L78">		return empId;</span>
+	}
+
+	/**
+	 * @param empId
+	 *            the empId to set
+	 */
+	public void setEmpId(int empId) {
+<span class="nc" id="L86">		this.empId = empId;</span>
+<span class="nc" id="L87">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

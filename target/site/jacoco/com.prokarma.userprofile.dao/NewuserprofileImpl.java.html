@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NewuserprofileImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ask_Portal Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.userprofile.dao</a> &gt; <span class="el_source">NewuserprofileImpl.java</span></div><h1>NewuserprofileImpl.java</h1><pre class="source lang-java linenums">package com.prokarma.userprofile.dao;
+
+import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+
+import com.prokarma.userprofile.model.UserProfileBean;
+
+/**
+ * @author prokarma
+ *
+ */
+<span class="nc" id="L23">public class NewuserprofileImpl implements INewUserProfileDao, Serializable {</span>
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+<span class="nc" id="L31">	public static final Logger LOGGER = Logger.getLogger(NewuserprofileImpl.class);</span>
+	/**
+	 * 
+	 */
+	@Autowired
+	private transient NamedParameterJdbcTemplate jdbctemplate;
+
+	/**
+	 * 
+	 */
+	@Autowired
+	private JdbcTemplate jdbcTemplateObj;
+
+	/**
+	 * response Msg
+	 */
+	String responseMsg;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prokarma.user_profile.dao.INewUserProfileDao#addUser
+	 * (com.prokarma.user_profile.model.UserProfileBean)
+	 */
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prokarma.user_profile.dao.INewUserProfileDao#addUser(com.prokarma.
+	 * user_profile.model.UserProfileBean)
+	 */
+	@Override
+	public String addUser(final UserProfileBean userProfile){
+
+<span class="nc" id="L64">		final String checkUsersql = &quot;select *  from  ask.ask_user_tbl where emp_id=:emplid&quot;;</span>
+<span class="nc" id="L65">		final MapSqlParameterSource mapEmpId = new MapSqlParameterSource();</span>
+<span class="nc" id="L66">		mapEmpId.addValue(&quot;emplid&quot;, userProfile.getEmpid());</span>
+
+<span class="nc" id="L68">		jdbctemplate.query(checkUsersql, mapEmpId, new ResultSetExtractor&lt;UserProfileBean&gt;() {</span>
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see org.springframework.jdbc.core.ResultSetExtractor#extractData(java.sql.
+			 * ResultSet)
+			 */
+			public UserProfileBean extractData(ResultSet idResultset) throws DataAccessException, SQLException {
+
+<span class="nc bnc" id="L77" title="All 2 branches missed.">				if (!idResultset.next()) {</span>
+
+<span class="nc" id="L79">					final String checkUserNamesql = &quot;select *  from  ask.ask_user_tbl where u_name =:userName&quot;;</span>
+<span class="nc" id="L80">					final MapSqlParameterSource mapUserName = new MapSqlParameterSource();</span>
+<span class="nc" id="L81">					mapUserName.addValue(&quot;userName&quot;, userProfile.getuName());</span>
+<span class="nc" id="L82">					jdbctemplate.query(checkUserNamesql, mapUserName, new ResultSetExtractor&lt;UserProfileBean&gt;() {</span>
+						/*
+						 * (non-Javadoc)
+						 * 
+						 * @see org.springframework.jdbc.core.ResultSetExtractor#extractData(java.sql.
+						 * ResultSet)
+						 */
+						public UserProfileBean extractData(ResultSet uNameResultset)
+								throws DataAccessException, SQLException {
+
+<span class="nc bnc" id="L92" title="All 2 branches missed.">							if (!uNameResultset.next()) {</span>
+
+<span class="nc" id="L94">								final String sql = &quot;INSERT INTO ask.ask_user_tbl (emp_id, fst_name, last_name,email_id,phn_no,u_name,user_key) VALUES &quot;</span>
+										+ &quot;(:empid,:firstname,:lastname,:email,:phn,:uname,:upwd)&quot;;
+<span class="nc" id="L96">								final MapSqlParameterSource mapperParams = new MapSqlParameterSource();</span>
+<span class="nc" id="L97">								mapperParams.addValue(&quot;empid&quot;, userProfile.getEmpid());</span>
+<span class="nc" id="L98">								mapperParams.addValue(&quot;firstname&quot;, userProfile.getFstname());</span>
+<span class="nc" id="L99">								mapperParams.addValue(&quot;lastname&quot;, userProfile.getLastname());</span>
+<span class="nc" id="L100">								mapperParams.addValue(&quot;email&quot;, userProfile.getEmailid());</span>
+<span class="nc" id="L101">								mapperParams.addValue(&quot;uname&quot;, userProfile.getuName());</span>
+<span class="nc" id="L102">								mapperParams.addValue(&quot;upwd&quot;, userProfile.getuPwd());</span>
+<span class="nc" id="L103">								mapperParams.addValue(&quot;phn&quot;, userProfile.getPhnNo());</span>
+<span class="nc" id="L104">								int result = 0;</span>
+								try {
+<span class="nc" id="L106">									result = jdbctemplate.update(sql, mapperParams);</span>
+<span class="nc" id="L107">								} catch (DuplicateKeyException e) {</span>
+<span class="nc" id="L108">									responseMsg = &quot;This email already registered! Please try another email&quot;;</span>
+<span class="nc" id="L109">								}</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">								if (result == 1) {</span>
+<span class="nc" id="L111">									LOGGER.info(&quot;User Credentials Successfully Added&quot;);</span>
+<span class="nc" id="L112">									responseMsg = &quot;Registered Successfully! Please Login&quot;;</span>
+								}
+
+<span class="nc" id="L115">							} else {</span>
+
+<span class="nc" id="L117">								responseMsg = &quot;UserName Already Exist! Please Try With Another&quot;;</span>
+<span class="nc" id="L118">								LOGGER.info(responseMsg);</span>
+
+							}
+
+<span class="nc" id="L122">							return null;</span>
+						}
+					});
+
+<span class="nc" id="L126">				} else {</span>
+<span class="nc" id="L127">					responseMsg = &quot;EmployeeID Already Registered! Please Login&quot;;</span>
+<span class="nc" id="L128">					LOGGER.info(responseMsg);</span>
+				}
+
+<span class="nc" id="L131">				return null;</span>
+			}
+		});
+
+<span class="nc" id="L135">		return responseMsg;</span>
+	}
+
+	public int giveEmpId(String firstName, String lastName) throws EmptyResultDataAccessException {
+<span class="nc" id="L139">		String sql = &quot;select emp_id from ask.ask_user_tbl where fst_name=? and last_name=?&quot;;</span>
+<span class="nc" id="L140">		return jdbcTemplateObj.queryForObject(sql, Integer.class, new Object[] { firstName, lastName });</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

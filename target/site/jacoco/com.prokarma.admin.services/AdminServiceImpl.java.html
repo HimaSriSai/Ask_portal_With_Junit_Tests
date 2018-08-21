@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ask_Portal Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.admin.services</a> &gt; <span class="el_source">AdminServiceImpl.java</span></div><h1>AdminServiceImpl.java</h1><pre class="source lang-java linenums">package com.prokarma.admin.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.prokarma.admin.dao.IAdminDAO;
+import com.prokarma.admin.model.FullNamesList;
+import com.prokarma.admin.model.RequestDetails;
+import com.prokarma.admin.model.ResponseMsg;
+
+/**
+ * @author Prokarma
+ *
+ */
+@Component
+<span class="nc" id="L18">public class AdminServiceImpl implements IAdminService {</span>
+
+	/**
+	 * 
+	 */
+	@Autowired
+	private IAdminDAO iAdminDAO;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.prokarma.admin.services.IAdminService#addAsSme(com.prokarma.admin.model.
+	 * RequestDetails)
+	 */
+	@Override
+	final public ResponseMsg addAsSme(RequestDetails requestDetails) {
+<span class="nc" id="L35">		ResponseMsg responseMsg = new ResponseMsg();</span>
+<span class="nc" id="L36">		String fullName = requestDetails.getFullName();</span>
+<span class="nc" id="L37">		String firstName = fullName.substring(0, fullName.indexOf(&quot; &quot;)).trim();</span>
+<span class="nc" id="L38">		String lastName = fullName.substring(fullName.indexOf(&quot; &quot;)).trim();</span>
+		try {
+<span class="nc" id="L40">			requestDetails.setEmpId(iAdminDAO.getEmpIdUsingName(firstName, lastName));</span>
+<span class="nc" id="L41">			int roleId = iAdminDAO.getSmeRoleId();</span>
+<span class="nc" id="L42">			List&lt;Integer&gt; ctrgyId = iAdminDAO.listOfCtrgyId(requestDetails.getCtrgyList());</span>
+<span class="nc" id="L43">			List&lt;Integer&gt; finalCtrgyId = iAdminDAO.removeDuplicateSME(ctrgyId, requestDetails.getEmpId());</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">			if (finalCtrgyId.isEmpty()) {</span>
+<span class="nc" id="L45">				responseMsg</span>
+<span class="nc" id="L46">						.setResponseMsg(&quot;'&quot; + requestDetails.getFullName() + &quot;' is alredy SME for selected categories&quot;);</span>
+			} else {
+<span class="nc" id="L48">				iAdminDAO.addEmpAsSme(requestDetails.getEmpId(), roleId, finalCtrgyId);</span>
+<span class="nc" id="L49">				responseMsg.setResponseMsg(&quot;successfully added '&quot; + requestDetails.getFullName() + &quot;' as SME&quot;);</span>
+			}
+<span class="nc" id="L51">		} catch (Exception e) {</span>
+<span class="nc" id="L52">			responseMsg.setResponseMsg(&quot;'&quot; + requestDetails.getFullName() + &quot;' is not a vaild name&quot;);</span>
+<span class="nc" id="L53">		}</span>
+<span class="nc" id="L54">		return responseMsg;</span>
+	}
+
+	public FullNamesList getFullNames() {
+<span class="nc" id="L58">		FullNamesList fullNamesList = new FullNamesList();</span>
+<span class="nc" id="L59">		fullNamesList.setFullNames(iAdminDAO.getNamesFormUserTbl());</span>
+<span class="nc" id="L60">		return fullNamesList;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

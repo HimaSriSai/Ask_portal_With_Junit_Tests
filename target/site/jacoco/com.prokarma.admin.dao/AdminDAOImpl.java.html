@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminDAOImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Ask_Portal Maven Webapp</a> &gt; <a href="index.source.html" class="el_package">com.prokarma.admin.dao</a> &gt; <span class="el_source">AdminDAOImpl.java</span></div><h1>AdminDAOImpl.java</h1><pre class="source lang-java linenums">package com.prokarma.admin.dao;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author Prokarma
+ *
+ */
+@Component
+<span class="nc" id="L18">public class AdminDAOImpl implements IAdminDAO {</span>
+
+	/**
+	 * 
+	 */
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prokarma.admin.dao.IAdminDAO#addEmpAsSme(int, int, java.util.List)
+	 */
+	public void addEmpAsSme(int empId, int roleId, List&lt;Integer&gt; ctrgyId) {
+
+<span class="nc" id="L33">		String query = &quot;insert into ask.ask_map_roleCtgry values(ask.map_id_seq.nextval,?,?,?)&quot;;</span>
+
+<span class="nc" id="L35">		jdbcTemplate.batchUpdate(query, new BatchPreparedStatementSetter() {</span>
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see org.springframework.jdbc.core.BatchPreparedStatementSetter
+			 */
+			public void setValues(PreparedStatement ps, int i) throws SQLException {
+<span class="nc" id="L42">				ps.setLong(1, empId);</span>
+<span class="nc" id="L43">				ps.setLong(2, roleId);</span>
+<span class="nc" id="L44">				ps.setLong(3, ctrgyId.get(i));</span>
+<span class="nc" id="L45">			}</span>
+
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see org.springframework.jdbc.core.BatchPreparedStatementSetter
+			 */
+			public int getBatchSize() {
+<span class="nc" id="L53">				return ctrgyId.size();</span>
+			}
+		});
+
+<span class="nc" id="L57">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prokarma.admin.dao.IAdminDAO#getSmeRoleId()
+	 */
+	public int getSmeRoleId() {
+
+<span class="nc" id="L66">		String sqlQuery = &quot;select role_id from ask.ask_role_tbl where role_name='SME'&quot;;</span>
+
+<span class="nc" id="L68">		return jdbcTemplate.queryForObject(sqlQuery, Integer.class);</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prokarma.admin.dao.IAdminDAO#listOfCtrgyId(java.util.List)
+	 */
+	public List&lt;Integer&gt; listOfCtrgyId(List&lt;String&gt; ctgryName) {
+<span class="nc" id="L77">		final List&lt;Integer&gt; ctgryId = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L78">		String sql = &quot;select ctgry_id from ask.ask_ctgry_tbl where ctgry_name=?&quot;;</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">		for (String selectedName : ctgryName) {</span>
+<span class="nc" id="L80">			int selectedId = 0;</span>
+<span class="nc" id="L81">			selectedId = (jdbcTemplate.queryForObject(sql, Integer.class, selectedName));</span>
+<span class="nc" id="L82">			ctgryId.add(selectedId);</span>
+<span class="nc" id="L83">		}</span>
+
+<span class="nc" id="L85">		return ctgryId;</span>
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.prokarma.admin.dao.IAdminDAO#removeDuplicateSME(java.util.List, int)
+	 */
+	public List&lt;Integer&gt; removeDuplicateSME(List&lt;Integer&gt; ctrgyIds, int empId) {
+<span class="nc" id="L95">		List&lt;Integer&gt; finalCtgryId = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L96">		int integer = 0;</span>
+<span class="nc" id="L97">		String sql = &quot;select emp_id from ask.ask_map_roleCtgry where emp_id=? and ctgry_id=?&quot;;</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">		for (int selectedCtrgyId : ctrgyIds) {</span>
+			try {
+<span class="nc" id="L100">				integer = jdbcTemplate.queryForObject(sql, Integer.class, new Object[] { empId, selectedCtrgyId });</span>
+<span class="nc" id="L101">			} catch (Exception e) {</span>
+<span class="nc" id="L102">				integer = 0;</span>
+<span class="nc" id="L103">			}</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">			if (integer == 0) {</span>
+<span class="nc" id="L105">				finalCtgryId.add(selectedCtrgyId);</span>
+			}
+
+<span class="nc" id="L108">		}</span>
+<span class="nc" id="L109">		return finalCtgryId;</span>
+	}
+
+	/**
+	 * @return list of full Names from user table
+	 */
+	public List&lt;String&gt; getNamesFormUserTbl() {
+<span class="nc" id="L116">		List&lt;String&gt; fullNames = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L117">		String sqlQuery = &quot;select fst_name||' '||last_name from ask.ask_user_tbl&quot;;</span>
+<span class="nc" id="L118">		fullNames = jdbcTemplate.queryForList(sqlQuery, String.class);</span>
+<span class="nc" id="L119">		return fullNames;</span>
+	}
+
+	/**
+	 * @return empId
+	 */
+	public int getEmpIdUsingName(String firstName, String lastName) throws Exception {
+<span class="nc" id="L126">		String sql = &quot;select emp_id from ask.ask_user_tbl where fst_name=? and last_name=?&quot;;</span>
+<span class="nc" id="L127">		return jdbcTemplate.queryForObject(sql, Integer.class, new Object[] { firstName, lastName });</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
